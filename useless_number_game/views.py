@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from useless_number_game import app
 
 app.config['MONGO_DBNAME'] = 'uselessnumbergame_players'
-app.config['MONGO_URI'] = 'mongodb://useless_number_game:0000@ds012198.mlab.com:12198/uselessnumbergame_players'
+app.config['MONGO_URI'] = 'mongodb://uselessNumberGame:0000@ds012198.mlab.com:12198/uselessnumbergame_players'
 uselessNumberGame_players = PyMongo(app)
 
 @app.route('/')
