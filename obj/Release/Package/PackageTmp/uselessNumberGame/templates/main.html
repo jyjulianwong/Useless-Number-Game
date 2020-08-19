@@ -1,0 +1,182 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    var play = 0;
+    var opMode = 0;
+    var number1 = 0;
+    var number2 = 0;
+    var symbol = "";
+    var answer = 0;
+    var answerA = 0;
+    var answerB = 0;
+    var answerC = 0;
+    var answerD = 0;
+    var answerLoc = 0;
+    var answeredTotal = 0;
+    var answeredCorrect = 0;
+    var scorePercent = 0;
+
+    function start() {
+        play = 1
+        quesGenerate();
+        document.getElementById('btnStart').style.display = 'none';
+        document.getElementById('divMainBack').style.marginTop = '50px';
+    }
+
+    function quesGenerate() {
+        number1 = Math.floor((Math.random() * 50) + 5);
+        number2 = Math.floor((Math.random() * 50) + 5);
+        opMode = Math.floor((Math.random() * 4)) + 1;
+        switch (opMode) {
+            case 1:
+                answer = number1 + number2;
+                symbol = " + ";
+                break;
+            case 2:
+                answer = number1 - number2;
+                symbol = " - ";
+                break;
+            case 3:
+                answer = number1 * number2;
+                symbol = " * ";
+                break;
+            case 4:
+                answer = number1 / number2;
+                symbol = " / ";
+                break;
+            default:
+                answer = number1 + number2;
+                symbol = " + ";
+        }
+        answer = Math.round(answer * 100) / 100;
+
+        answerLoc = Math.floor((Math.random() * 4)) + 1;
+        switch (answerLoc) {
+            case 1:
+                answerA = answer;
+                answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                break;
+            case 2:
+                answerA = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerB = answer;
+                answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                break;
+            case 3:
+                answerA = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerC = answer;
+                answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                break;
+            case 4:
+                answerA = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerD = answer;
+                break;
+            default:
+                answerA = answer;
+                answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+                answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+        }
+        if (answeredTotal == 0) {
+            scorePercent = 0
+        } else {
+            scorePercent = Math.round((answeredCorrect / answeredTotal) * 100)
+        }
+        document.getElementById("question").innerHTML = String(number1) + symbol + String(number2);
+        document.getElementById("score").innerHTML = "Your score is " + String(answeredCorrect) + " / " + String(answeredTotal) + ", or " + String(scorePercent) + "%.";
+        document.getElementById("btnAnswerA").innerHTML = String(answerA);
+        document.getElementById("btnAnswerB").innerHTML = String(answerB);
+        document.getElementById("btnAnswerC").innerHTML = String(answerC);
+        document.getElementById("btnAnswerD").innerHTML = String(answerD);
+    }
+
+    function answerAClick() {
+        if (play == 1) {
+            answeredTotal += 1;
+            if (answerA == String(answer)) {
+                answeredCorrect += 1;
+                quesGenerate();
+            } else {
+                quesGenerate();
+            }
+        } else {
+            document.getElementById("score").innerHTML = "This is stupid...";
+            document.getElementById("question").innerHTML = "Are you really that bored?";
+        }
+    }
+
+    function answerBClick() {
+        if (play == 1) {
+            answeredTotal += 1;
+            if (answerB == String(answer)) {
+                answeredCorrect += 1;
+                quesGenerate();
+            } else {
+                quesGenerate();
+            }
+        } else {
+            document.getElementById("score").innerHTML = "Do something more productive...";
+            document.getElementById("question").innerHTML = "Get a life, mate.";
+        }
+    }
+
+    function answerCClick() {
+        if (play == 1) {
+            answeredTotal += 1;
+            if (answerC == String(answer)) {
+                answeredCorrect += 1;
+                quesGenerate();
+            } else {
+                quesGenerate();
+            }
+        } else {
+            document.getElementById("score").innerHTML = "Okay, I'm bored as well...";
+            document.getElementById("question").innerHTML = "Bored coding this stupid website.";
+        }
+    }
+
+    function answerDClick() {
+        if (play == 1) {
+            answeredTotal += 1;
+            if (answerD == String(answer)) {
+                answeredCorrect += 1;
+                quesGenerate();
+            } else {
+                quesGenerate();
+            }
+        } else {
+            document.getElementById("score").innerHTML = "Why are you still here?!";
+            document.getElementById("question").innerHTML = "There's more to life than this.";
+        }
+    }
+</script>
+
+<h6 id="score" align="center"></h6>
+<h1 id="question" align="center"></h1>
+
+<div style="text-align: center; margin-top: 50px;">
+    <button type="button" id="btnAnswerA" class="buttonRed" onclick="answerAClick()">A</button>
+    <button type="button" id="btnAnswerB" class="buttonGreen" onclick="answerBClick()">B</button>
+</div>
+
+<div style="text-align: center; margin-top: 25px">
+    <button type="button" id="btnAnswerC" class="buttonBlue" onclick="answerCClick()">C</button>
+    <button type="button" id="btnAnswerD" class="buttonYellow" onclick="answerDClick()">D</button>
+</div>
+
+<div style="text-align: center; margin-top: 50px;">
+    <button type="button" id="btnStart" class="buttonNav" onclick="start()">I am really bored...</button>
+</div>
+
+<div id="divMainBack" style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnMainBack" class="buttonNav" onclick="window.location.href='start'">Back...</button>
+</div>
+
+{% endblock %}

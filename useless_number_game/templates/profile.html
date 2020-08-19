@@ -1,0 +1,41 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<statusBar style="margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar>
+
+{% if 'username' not in session %}
+
+<h1 align="center"> Hey there, human! </h1>
+<h6 align="center"> Might wanna sign in first, mate… </h6>
+
+<div id="divProfileBack" style="text-align: center; margin-top: 50px;">
+    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+</div>
+
+{% endif %}
+
+{% if 'username' in session %}
+
+<h1 align="center"><u> {{ session['username'] }} </u></h1>
+<h6 align="center"> A useless player since {{ signUpDate }}. </h6>
+
+<div style="text-align: center; margin-top: 50px;">
+    <button type="button" id="btnStartProfileChangePassword" class="buttonNav" onclick="window.location.href='profile/change-password'">Change my password.</button>
+</div>
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
+</div>
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStartProfileDelete" class="buttonRed" onclick="window.location.href='profile/delete'">Delete me!</button>
+</div>
+
+<div id="divProfileBack" style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+</div>
+
+{% endif %}
+
+{% endblock %}

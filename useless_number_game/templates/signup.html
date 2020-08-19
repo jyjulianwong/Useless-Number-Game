@@ -1,0 +1,30 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 align="center"> Useless Number Game. </h1>
+
+<div class="container" align="center" style="margin-top: 25px">
+    <h6>Sign up right here, human…</h6>
+    <br />
+    <form action="{{ url_for('signUp') }}" method="post">
+        <input type="text" placeholder="Your new username?" name="username" value="{{ request.form['username'] }}">
+        <br />
+        <input type="password" placeholder="Your new password?" name="password" value="{{ request.form['password'] }}">
+        <br />
+        <input type="password" placeholder="Your new password, once more?" name="passwordRe" value="{{ request.form['passwordRe'] }}">
+        <br />
+        {% if error != None %}
+        <p2 style="text-align: center">{{ error }}</p2>
+        {% endif %}
+        <div id="divSignUp" style="text-align: center; margin-top: 25px;">
+            <input class="btnSignUp" type="submit" value="Sign up…">
+        </div>
+    </form>
+</div>
+
+<div id="divSignUpBack" style="text-align: center; margin-top: 10px;">
+    <button type="button" id="btnSignUpBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+</div>
+
+{% endblock %}

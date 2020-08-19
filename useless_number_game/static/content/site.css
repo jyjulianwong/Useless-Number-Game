@@ -1,0 +1,322 @@
+body {
+    padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-image: url("bg_chalkboard.jpeg");
+}
+
+statusBar {
+    display: block;
+    padding: 15px 15px;
+    background-color: rgba(200, 200, 200, 0.50);
+    text-align: center;
+    border: 5px solid rgba(255, 255, 255, 0.50);
+    border-radius: 15px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    statusBar:hover {
+        background-color: rgba(255, 255, 255, 0.65);
+    }
+
+h1 {
+    font-family: "Patrick Hand";
+    font-size: 40px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000; 
+}
+
+h6 {
+    font-family: "Patrick Hand";
+    font-size: 32px;
+    line-height: normal;
+    color: #eeeeee;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p1 {
+    font-family: "Patrick Hand";
+    font-size: 24px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p1-red {
+    font-family: "Patrick Hand";
+    font-size: 24px;
+    line-height: normal;
+    color: #ff9988;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p2 {
+    font-family: "Patrick Hand";
+    font-size: 20px;
+    line-height: normal;
+    color: #eeeeee;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p3 {
+    font-family: "Patrick Hand";
+    font-size: 18px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+a:link {
+    color: #bbffdd;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #99ddbb;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ccffee;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #88ccaa;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+button.buttonNav {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #00cc99;
+    color: #ffffff;
+    border: 0px solid #00cc99;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonNav:hover {
+        color: #ffffff;
+        background: #11ddaa;
+        border: 0px solid #11ddaa;
+        transform: scale(1.05, 1.05)
+    }
+
+    button.buttonNav:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonRed {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #ff9988;
+    color: #ffffff;
+    border: 0px solid #ff9988;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonRed:hover {
+        color: #ffffff;
+        background: #ffbbaa;
+        border: 0px solid #ffbbaa;
+        transform: scale(1.05, 1.05)
+    }
+
+    button.buttonRed:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonGreen {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #99ee99;
+    color: #ffffff;
+    border: 0px solid #99ee99;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonGreen:hover {
+        color: #ffffff;
+        background: #bbffbb;
+        border: 0px solid #bbffbb;
+        transform: scale(1.05, 1.05)
+    }
+
+    button.buttonGreen:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonBlue {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #00ccee;
+    color: #ffffff;
+    border: 0px solid #00ccee;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonBlue:hover {
+        color: #ffffff;
+        background: #00eeff;
+        border: 0px solid #00eeff;
+        transform: scale(1.05, 1.05)
+    }
+
+    button.buttonBlue:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonYellow {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #eedd88;
+    color: #ffffff;
+    border: 0px solid #eedd88;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonYellow:hover {
+        color: #ffffff;
+        background: #eeffaa;
+        border: 0px solid #eeffaa;
+        transform: scale(1.05, 1.05)
+    }
+
+    button.buttonYellow:active {
+        transform: rotate(-2.5deg);
+    }
+
+input[type=text], select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    font-family: "Patrick Hand";
+    font-size: 20px;
+    background: #00cc99;
+    color: #ffffff;
+    border: 1px solid #00eebb;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+input[type=text]::-webkit-input-placeholder {
+    color: #00eebb
+}
+
+input[type=text]:-ms-input-placeholder {
+    color: #00eebb
+}
+
+input[type=text]::-moz-placeholder {
+    color: #00eebb
+}
+
+    input[type=text]:focus {
+        transform: scale(1.025, 1.025)
+    }
+
+input[type=password], select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    font-family: "Patrick Hand";
+    font-size: 20px;
+    background: #00cc99;
+    color: #ffffff;
+    border: 1px solid #00eebb;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+input[type=password]::-webkit-input-placeholder {
+    color: #00eebb
+}
+
+input[type=password]:-ms-input-placeholder {
+    color: #00eebb
+}
+
+input[type=password]::-moz-placeholder {
+    color: #00eebb
+}
+
+    input[type=password]:focus {
+        transform: scale(1.025, 1.025)
+    }
+
+input[type=submit] {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #00cc99;
+    color: #ffffff;
+    border: 0px solid #00cc99;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    input[type=submit]:hover {
+        color: #ffffff;
+        background: #11ddaa;
+        border: 0px solid #11ddaa;
+        transform: scale(1.05, 1.05)
+    }
+
+    input[type=submit]:active {
+        transform: rotate(-2.5deg);
+    }

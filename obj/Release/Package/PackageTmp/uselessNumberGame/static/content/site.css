@@ -1,0 +1,167 @@
+body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-image: url("bg_chalkboard.jpeg");
+}
+
+h1 {
+    font-family: "Patrick Hand";
+    font-size: 52px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000; 
+}
+
+h6 {
+    font-family: "Patrick Hand";
+    font-size: 36px;
+    line-height: normal;
+    color: #eeeeee;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p1 {
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    line-height: normal;
+    color: #90EEBB;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p2 {
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    line-height: normal;
+    color: #eeeeee;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+button.buttonNav {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 36px;
+    background: #00cc99;
+    color: #ffffff;
+    border: 0px solid #00cc99;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonNav:hover {
+        color: #ffffff;
+        background: #009999;
+        border: 0px solid #009999;
+    }
+
+    button.buttonNav:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonRed {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 36px;
+    background: #ff9999;
+    color: #ffffff;
+    border: 0px solid #ff9999;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonRed:hover {
+        color: #ffffff;
+        background: #dd7777;
+        border: 0px solid #dd7777;
+    }
+
+    button.buttonRed:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonGreen {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 36px;
+    background: #99cc99;
+    color: #ffffff;
+    border: 0px solid #99cc99;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonGreen:hover {
+        color: #ffffff;
+        background: #77aa77;
+        border: 0px solid #77aa77;
+    }
+
+    button.buttonGreen:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonBlue {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 36px;
+    background: #00ccdd;
+    color: #ffffff;
+    border: 0px solid #00ccdd;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonBlue:hover {
+        color: #ffffff;
+        background: #00aabb;
+        border: 0px solid #00aabb;
+    }
+
+    button.buttonBlue:active {
+        transform: rotate(-2.5deg);
+    }
+
+button.buttonYellow {
+    width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 36px;
+    background: #ffcc99;
+    color: #ffffff;
+    border: 0px solid #ffcc99;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    button.buttonYellow:hover {
+        color: #ffffff;
+        background: #ddaa77;
+        border: 0px solid #ddaa77;
+    }
+
+    button.buttonYellow:active {
+        transform: rotate(-2.5deg);
+    }

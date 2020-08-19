@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if 'username' in session %}
+
+<a href="{{ url_for('profile') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar></a>
+
+{% else %}
+
+<a href="{{ url_for('signIn') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar></a>
+
+{% endif %}
+
+<h1 align="center"> Useless Number Game. </h1>
+<h6 align="center"> It's what it says on the tin. </h6>
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStart" class="buttonNav" onclick="window.location.href='main'">I am bored.</button>
+</div>
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnAbout" class="buttonNav" onclick="window.location.href='about'">What is this?</button>
+</div>
+
+{% if 'username' not in session %}
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStartSignUp" class="buttonNav" onclick="window.location.href='signup'">Sign me up.</button>
+</div>
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStartSignIn" class="buttonNav" onclick="window.location.href='signin'">Sign me in.</button>
+</div>
+
+{% endif %}
+
+{% if 'username' in session %}
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
+</div>
+
+{% endif %}
+
+<div style="text-align: center; margin-top: 25px;">
+    <p2>
+        Licensed under the GNU General Public License v3.0. Made by <a href="https://github.com/jyjulianwong/" target="_blank">Julian Wong</a> in 2018.
+    </p2>
+</div>
+
+{% endblock %}
