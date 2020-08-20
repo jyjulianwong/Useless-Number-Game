@@ -9,7 +9,7 @@ from uselessNumberGame import app
 @app.route('/start')
 def home():
     return render_template(
-        'start.html',
+        'home.html',
     )
 
 @app.route('/main')

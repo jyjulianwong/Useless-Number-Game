@@ -4,11 +4,11 @@
 
 {% if 'username' in session %}
 
-<a href="{{ url_for('profile') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar></a>
+<a href="{{ url_for('profile') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
 
 {% else %}
 
-<a href="{{ url_for('signIn') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar></a>
+<a href="{{ url_for('sign_in') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
 
 {% endif %}
 
@@ -45,7 +45,8 @@
 
 <div style="text-align: center; margin-top: 25px;">
     <p2>
-        Licensed under the GNU General Public License v3.0. Made by <a href="https://github.com/jyjulianwong/" target="_blank">Julian Wong</a> in 2018.
+        Originally made, with literally zero love and care,
+        by <a href="https://github.com/jyjulianwong/" target="_blank">a total crackhead</a> in 2018.
     </p2>
 </div>
 

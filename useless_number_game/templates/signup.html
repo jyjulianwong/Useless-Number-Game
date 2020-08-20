@@ -7,12 +7,12 @@
 <div class="container" align="center" style="margin-top: 25px">
     <h6>Sign up right here, human…</h6>
     <br />
-    <form action="{{ url_for('signUp') }}" method="post">
+    <form action="{{ url_for('sign_up') }}" method="post">
         <input type="text" placeholder="Your new username?" name="username" value="{{ request.form['username'] }}">
         <br />
         <input type="password" placeholder="Your new password?" name="password" value="{{ request.form['password'] }}">
         <br />
-        <input type="password" placeholder="Your new password, once more?" name="passwordRe" value="{{ request.form['passwordRe'] }}">
+        <input type="password" placeholder="Your new password, once more?" name="passwordRe" value="{{ request.form['passwordConfirm'] }}">
         <br />
         {% if error != None %}
         <p2 style="text-align: center">{{ error }}</p2>
@@ -24,7 +24,7 @@
 </div>
 
 <div id="divSignUpBack" style="text-align: center; margin-top: 10px;">
-    <button type="button" id="btnSignUpBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+    <button type="button" id="btnSignUpBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endblock %}

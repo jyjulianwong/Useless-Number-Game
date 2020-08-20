@@ -4,11 +4,11 @@
 
 {% if 'username' in session %}
 
-<a href="{{ url_for('profile') }}"><statusBar style="margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar></a>
+<a href="{{ url_for('profile') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
 
 {% else %}
 
-<a href="{{ url_for('signIn') }}"><statusBar style="margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar></a>
+<a href="{{ url_for('sign_in') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
 
 {% endif %}
 
@@ -17,22 +17,29 @@
 
 <div style="margin-top: 25px;">
     <p1>
-        Yes, literally. A. Useless. Number. Game. I honestly don't know how I can put it to you any more clearer than that. Okay, there are basic arithmetic questions and you push some buttons to answer and you get a score and blah blah blah. Seriously though, unless you are super dumb and super bored, I wouldn't exactly recommend this to anyone. Just do something more productive and you'll be fine, my friend. And for the record, this is a Google font, not freaking Comic Sans.
+        Yes. It's. Literally. A. Useless. Number. Game.
+        I honestly don't know how I can put it to you any more clearer than that.
+        There's basic arithmetic questions and you push some buttons to answer and you get a score. Period.
+        Seriously though, unless you are catastrophically dumb or life-threateningly bored, I wouldn't exactly recommend this to anyone.
+        Just do something more productive and you'll be fine.
+        And for the record, this is a Google font, not goddamn Comic Sans.
     </p1>
 </div>
 
 <div style="text-align: center; margin-top: 25px;">
     <p2>
-        Licensed under the GNU General Public License v3.0. Made by <a href="https://github.com/jyjulianwong/" target="_blank">Julian Wong</a> in 2018.
+        Originally made, with literally zero love and care,
+        by <a href="https://github.com/jyjulianwong/" target="_blank">a total crackhead</a> in 2018.
     </p2>
     <br />
     <p2>
-        For more information, view the <a href="https://github.com/jyjulianwong/uselessNumberGame" target="_blank">GitHub repository</a> for this website to see how it is built.
+        For more information, view the <a href="https://github.com/jyjulianwong/exercise-useless-number-game" target="_blank">GitHub repository</a>
+        for this website to see how it was made.
     </p2>
 </div>
 
 <div style="text-align: center; margin-top: 25px;">
-    <button type="button" id="btnAboutBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+    <button type="button" id="btnAboutBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endblock %}

@@ -3,7 +3,8 @@ body {
     padding-bottom: 15px;
     padding-left: 15px;
     padding-right: 15px;
-    background-image: url("bg_chalkboard.jpeg");
+    background-image: url("bg_chalkboard.png");
+    background-size: cover;
 }
 
 statusBar {

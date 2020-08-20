@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<statusBar style="margin-bottom: 25px"><p3> {{ playerStatus }} </p3></statusBar>
+<statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar>
 
 {% if 'username' not in session %}
 
@@ -10,7 +10,7 @@
 <h6 align="center"> Might wanna sign in first, mate… </h6>
 
 <div id="divProfileBack" style="text-align: center; margin-top: 50px;">
-    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endif %}
@@ -18,7 +18,7 @@
 {% if 'username' in session %}
 
 <h1 align="center"><u> {{ session['username'] }} </u></h1>
-<h6 align="center"> A useless player since {{ signUpDate }}. </h6>
+<h6 align="center"> A useless player since {{ sign_up_date }}. </h6>
 
 <div style="text-align: center; margin-top: 50px;">
     <button type="button" id="btnStartProfileChangePassword" class="buttonNav" onclick="window.location.href='profile/change-password'">Change my password.</button>
@@ -33,7 +33,7 @@
 </div>
 
 <div id="divProfileBack" style="text-align: center; margin-top: 25px;">
-    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endif %}

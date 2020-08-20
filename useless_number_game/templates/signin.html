@@ -7,7 +7,7 @@
 <div class="container" align="center" style="margin-top: 25px">
     <h6>Sign in right here, human…</h6>
     <br />
-    <form action="{{ url_for('signIn') }}" method="post">
+    <form action="{{ url_for('sign_in') }}" method="post">
         <input type="text" placeholder="What's your username?" name="username" value="{{ request.form['username'] }}">
         <br />
         <input type="password" placeholder="What's your password?" name="password" value="{{ request.form['password'] }}">
@@ -22,7 +22,7 @@
 </div>
 
 <div id="divSignInBack" style="text-align: center; margin-top: 10px;">
-    <button type="button" id="btnSignInBack" class="buttonNav" onclick="window.location.href='start'">Back…</button>
+    <button type="button" id="btnSignInBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endblock %}
