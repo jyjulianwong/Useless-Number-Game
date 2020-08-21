@@ -4,11 +4,11 @@
 
 {% if 'username' in session %}
 
-<a href="{{ url_for('profile') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
+<a href="{{ url_for('profile') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
 
 {% else %}
 
-<a href="{{ url_for('sign_in') }}"><statusBar style="margin-top: 20px; margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
+<a href="{{ url_for('sign_in') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
 
 {% endif %}
 
@@ -23,7 +23,13 @@
     <button type="button" id="btnAbout" class="buttonNav" onclick="window.location.href='about'">What is this?</button>
 </div>
 
-{% if 'username' not in session %}
+{% if 'username' in session %}
+
+<div style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
+</div>
+
+{% else %}
 
 <div style="text-align: center; margin-top: 25px;">
     <button type="button" id="btnStartSignUp" class="buttonNav" onclick="window.location.href='signup'">Sign me up.</button>
@@ -31,14 +37,6 @@
 
 <div style="text-align: center; margin-top: 25px;">
     <button type="button" id="btnStartSignIn" class="buttonNav" onclick="window.location.href='signin'">Sign me in.</button>
-</div>
-
-{% endif %}
-
-{% if 'username' in session %}
-
-<div style="text-align: center; margin-top: 25px;">
-    <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
 </div>
 
 {% endif %}
