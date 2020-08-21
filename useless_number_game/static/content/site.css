@@ -8,6 +8,7 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 15px;
 }
 
 statusBar {
@@ -97,7 +98,7 @@ a:active {
     text-decoration: underline;
 }
 
-button.buttonNav {
+.buttonNav {
     width: 300px;
     padding: 15px;
     cursor: pointer;
@@ -112,8 +113,7 @@ button.buttonNav {
     transition-duration: 0.25s;
 }
 
-    button.buttonNav:hover {
-        color: #ffffff;
+    .buttonNav:hover {
         background: #11ddaa;
         border: 0px solid #11ddaa;
         transform: scale(1.05, 1.05)
@@ -123,116 +123,52 @@ button.buttonNav {
         transform: rotate(-2.5deg);
     }
 
-button.buttonRed {
-    width: 300px;
-    padding: 15px;
-    cursor: pointer;
-    font-family: "Patrick Hand";
-    font-size: 28px;
-    text-shadow: 2px 2px 4px #000000;
+.buttonRed {
     background: #ff9988;
-    color: #ffffff;
     border: 0px solid #ff9988;
-    border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
-    transition-duration: 0.25s;
 }
 
-    button.buttonRed:hover {
-        color: #ffffff;
+    .buttonRed:hover {
         background: #ffbbaa;
         border: 0px solid #ffbbaa;
-        transform: scale(1.05, 1.05)
     }
 
-    button.buttonRed:active {
-        transform: rotate(-2.5deg);
-    }
-
-button.buttonGreen {
-    width: 300px;
-    padding: 15px;
-    cursor: pointer;
-    font-family: "Patrick Hand";
-    font-size: 28px;
-    text-shadow: 2px 2px 4px #000000;
+.buttonGreen {
     background: #99ee99;
-    color: #ffffff;
     border: 0px solid #99ee99;
-    border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
-    transition-duration: 0.25s;
 }
 
-    button.buttonGreen:hover {
-        color: #ffffff;
+    .buttonGreen:hover {
         background: #bbffbb;
         border: 0px solid #bbffbb;
-        transform: scale(1.05, 1.05)
     }
 
-    button.buttonGreen:active {
-        transform: rotate(-2.5deg);
-    }
-
-button.buttonBlue {
-    width: 300px;
-    padding: 15px;
-    cursor: pointer;
-    font-family: "Patrick Hand";
-    font-size: 28px;
-    text-shadow: 2px 2px 4px #000000;
+.buttonBlue {
     background: #00ccee;
-    color: #ffffff;
     border: 0px solid #00ccee;
-    border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
-    transition-duration: 0.25s;
 }
 
-    button.buttonBlue:hover {
-        color: #ffffff;
+    .buttonBlue:hover {
         background: #00eeff;
         border: 0px solid #00eeff;
-        transform: scale(1.05, 1.05)
     }
 
-    button.buttonBlue:active {
-        transform: rotate(-2.5deg);
-    }
-
-button.buttonYellow {
-    width: 300px;
-    padding: 15px;
-    cursor: pointer;
-    font-family: "Patrick Hand";
-    font-size: 28px;
-    text-shadow: 2px 2px 4px #000000;
+.buttonYellow {
     background: #eedd88;
-    color: #ffffff;
     border: 0px solid #eedd88;
-    border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
-    transition-duration: 0.25s;
 }
 
-    button.buttonYellow:hover {
-        color: #ffffff;
+    .buttonYellow:hover {
         background: #eeffaa;
         border: 0px solid #eeffaa;
-        transform: scale(1.05, 1.05)
-    }
-
-    button.buttonYellow:active {
-        transform: rotate(-2.5deg);
     }
 
 input[type=text], select {

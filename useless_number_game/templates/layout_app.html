@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if 'username' in session %}
+
+<statusBar><a href="{{ url_for('profile') }}"><p3> {{ player_status }} </p3></a></statusBar>
+
+{% else %}
+
+<statusBar><a href="{{ url_for('sign_in') }}"><p3> {{ player_status }} </p3></a></statusBar>
+
+{% endif %}
+
+{% block app_content %}{% endblock %}
+
+{% endblock %}

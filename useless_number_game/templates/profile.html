@@ -1,19 +1,6 @@
-{% extends "layout.html" %}
+{% extends "layout_app.html" %}
 
-{% block content %}
-
-<statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar>
-
-{% if 'username' not in session %}
-
-<h1 align="center"> Hey there, human! </h1>
-<h6 align="center"> Might wanna sign in first, mate… </h6>
-
-<div id="divProfileBack" style="text-align: center; margin-top: 50px;">
-    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
-</div>
-
-{% endif %}
+{% block app_content %}
 
 {% if 'username' in session %}
 
@@ -33,6 +20,15 @@
 </div>
 
 <div id="divProfileBack" style="text-align: center; margin-top: 25px;">
+    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
+</div>
+
+{% else %}
+
+<h1 align="center"> Hey there, human! </h1>
+<h6 align="center"> Might wanna sign in first, mate… </h6>
+
+<div id="divProfileBack" style="text-align: center; margin-top: 50px;">
     <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 

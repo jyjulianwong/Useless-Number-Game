@@ -1,16 +1,6 @@
-{% extends "layout.html" %}
+{% extends "layout_app.html" %}
 
-{% block content %}
-
-{% if 'username' in session %}
-
-<a href="{{ url_for('profile') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
-
-{% else %}
-
-<a href="{{ url_for('sign_in') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
-
-{% endif %}
+{% block app_content %}
 
 <h1 align="center"> Useless Number Game. </h1>
 <h6 align="center"> It's what it says on the tin. </h6>

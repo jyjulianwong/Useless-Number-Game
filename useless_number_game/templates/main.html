@@ -1,29 +1,19 @@
-{% extends "layout.html" %}
+{% extends "layout_app.html" %}
 
-{% block content %}
-
-{% if 'username' in session %}
-
-<a href="{{ url_for('profile') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
-
-{% else %}
-
-<a href="{{ url_for('sign_in') }}"><statusBar style="margin-bottom: 25px"><p3> {{ player_status }} </p3></statusBar></a>
-
-{% endif %}
+{% block app_content %}
 
 <h6 id="score" align="center"></h6>
 <h6 id="timer" align="center"></h6>
 <h1 id="question" align="center"></h1>
 
 <div style="text-align: center; margin-top: 50px;">
-    <button type="button" id="btnAnswerA" class="buttonRed" onclick="answerAClick()">A</button>
-    <button type="button" id="btnAnswerB" class="buttonGreen" onclick="answerBClick()">B</button>
+    <button type="button" id="btnAnswerA" class="buttonNav buttonRed" onclick="answerAClick()">A</button>
+    <button type="button" id="btnAnswerB" class="buttonNav buttonGreen" onclick="answerBClick()">B</button>
 </div>
 
 <div style="text-align: center; margin-top: 25px">
-    <button type="button" id="btnAnswerC" class="buttonBlue" onclick="answerCClick()">C</button>
-    <button type="button" id="btnAnswerD" class="buttonYellow" onclick="answerDClick()">D</button>
+    <button type="button" id="btnAnswerC" class="buttonNav buttonBlue" onclick="answerCClick()">C</button>
+    <button type="button" id="btnAnswerD" class="buttonNav buttonYellow" onclick="answerDClick()">D</button>
 </div>
 
 <div id="divStart" style="text-align: center; margin-top: 50px;">
