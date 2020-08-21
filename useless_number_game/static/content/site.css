@@ -100,6 +100,7 @@ a:active {
 
 .buttonNav {
     width: 300px;
+    margin: 10px;
     padding: 15px;
     cursor: pointer;
     font-family: "Patrick Hand";
@@ -126,8 +127,6 @@ a:active {
 .buttonRed {
     background: #ff9988;
     border: 0px solid #ff9988;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
     .buttonRed:hover {
@@ -138,8 +137,6 @@ a:active {
 .buttonGreen {
     background: #99ee99;
     border: 0px solid #99ee99;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
     .buttonGreen:hover {
@@ -150,8 +147,6 @@ a:active {
 .buttonBlue {
     background: #00ccee;
     border: 0px solid #00ccee;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
     .buttonBlue:hover {
@@ -162,8 +157,6 @@ a:active {
 .buttonYellow {
     background: #eedd88;
     border: 0px solid #eedd88;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
     .buttonYellow:hover {

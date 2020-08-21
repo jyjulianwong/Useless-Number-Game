@@ -11,16 +11,12 @@
     <button type="button" id="btnStartProfileChangePassword" class="buttonNav" onclick="window.location.href='profile/change-password'">Change my password.</button>
 </div>
 
-<div style="text-align: center; margin-top: 25px;">
+<div style="text-align: center">
     <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
 </div>
 
-<div style="text-align: center; margin-top: 25px;">
+<div style="text-align: center">
     <button type="button" id="btnStartProfileDelete" class="buttonRed" onclick="window.location.href='profile/delete'">Delete me!</button>
-</div>
-
-<div id="divProfileBack" style="text-align: center; margin-top: 25px;">
-    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% else %}
@@ -28,10 +24,10 @@
 <h1 align="center"> Hey there, human! </h1>
 <h6 align="center"> Might wanna sign in first, mate… </h6>
 
+{% endif %}
+
 <div id="divProfileBack" style="text-align: center; margin-top: 50px;">
     <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
-
-{% endif %}
 
 {% endblock %}
