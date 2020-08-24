@@ -10,11 +10,24 @@ var answerA = 0;
 var answerB = 0;
 var answerC = 0;
 var answerD = 0;
-var answerLoc = 0;
 var answeredTotal = 0;
 var answeredCorrect = 0;
 var scorePercent = 0;
 var timerValue = 0;
+
+const uselessStatements1 = [
+  "This is stupid…",
+  "Do something more productive…",
+  "Okay, I'm bored as well…",
+  "Why are you still here?!"
+];
+
+const uselessStatements2 = [
+  "Are you really that bored?",
+  "Get a life.",
+  "Bored coding this stupid website.",
+  "There's more to life than this."
+];
 
 function precisionRound(number, precision) {
     var numberStr = number.toFixed(precision);
@@ -33,16 +46,15 @@ function init() {
     answerB = 0;
     answerC = 0;
     answerD = 0;
-    answerLoc = 0;
     answeredTotal = 0;
     answeredCorrect = 0;
     scorePercent = 0;
     timerValue = 0;
 
-    document.getElementById('divStart').style.display = 'block';
-    document.getElementById('divMainBack').style.marginTop = '25px';
+    document.getElementById("divStart").style.display = 'block';
     document.getElementById("question").innerHTML = "";
     document.getElementById("score").innerHTML = "";
+    document.getElementById("timer").style.display = 'none';
     document.getElementById("timer").innerHTML = "";
     document.getElementById("btnAnswerA").innerHTML = "A";
     document.getElementById("btnAnswerB").innerHTML = "B";
@@ -53,8 +65,9 @@ function init() {
 function start() {
     play = 1;
     quesGenerate(1);
-    document.getElementById('divStart').style.display = 'none';
-    document.getElementById('divMainBack').style.marginTop = '50px';
+    document.getElementById("divStart").style.display = 'none';
+    document.getElementById("timer").style.display = 'block';
+    // document.getElementById('divMainBack').style.marginTop = '50px';
     document.getElementById("question").style.color = "#ffffff";
 
     timerValue = timerInit + 1;
@@ -88,8 +101,8 @@ function quesGenerate(start) {
             symbol = " + ";
     }
 
-    answerLoc = Math.floor((Math.random() * 4)) + 1;
-    switch (answerLoc) {
+    let randomOption = Math.floor((Math.random() * 4)) + 1;
+    switch (randomOption) {
         case 1:
             answerA = answer;
             answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
@@ -120,7 +133,8 @@ function quesGenerate(start) {
             answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
             answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
     }
-    answerCheck();
+
+    checkRepeatedAnswers();
 
     if (answeredTotal == 0) {
         scorePercent = 0;
@@ -141,7 +155,7 @@ function quesGenerate(start) {
     document.getElementById("btnAnswerD").innerHTML = String(answerD);
 
     if (start == 0) {
-        scoreCheck();
+        checkIsGameOver();
     }
 }
 
@@ -161,19 +175,50 @@ function timerUpdate() {
     }
 }
 
-function answerCheck() {
+function checkRepeatedAnswers() {
     if (answerA == answerB || answerA == answerC || answerA == answerD || answerB == answerC || answerB == answerD || answerC == answerD) {
         quesGenerate(0);
     }
 }
 
-function scoreCheck() {
+function checkIsGameOver() {
     if (scorePercent < 50) {
         clearInterval(timerRefer);
         init();
         document.getElementById("question").style.color = "#ff9988";
         document.getElementById("question").innerHTML = "You've failed the test. Again?";
         document.getElementById("score").innerHTML = "You know you need 50% to pass, right?";
+    }
+}
+
+function checkAnswer(option) {
+    let selectedAnswer;
+    switch (option) {
+        case "a":
+            selectedAnswer = answerA;
+            break;
+        case "b":
+            selectedAnswer = answerB;
+            break;
+        case "c":
+            selectedAnswer = answerC;
+            break;
+        case "d":
+            selectedAnswer = answerD;
+            break;
+    }
+
+    if (play == 1) {
+        answeredTotal += 1;
+        timerValue = timerInit + 1;
+        if (selectedAnswer == String(answer)) {
+            answeredCorrect += 1;
+        }
+        quesGenerate(0);
+    } else {
+        let randomIndex = Math.floor(Math.random() * uselessStatements1.length);
+        document.getElementById("score").innerHTML = uselessStatements1[randomIndex];
+        document.getElementById("question").innerHTML = uselessStatements2[randomIndex];
     }
 }
 
