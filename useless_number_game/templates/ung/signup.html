@@ -17,14 +17,14 @@
         {% if error != None %}
         <p2 style="text-align: center">{{ error }}</p2>
         {% endif %}
-        <div id="divSignUp" style="text-align: center; margin-top: 25px;">
+        <div id="divSignUp" class="section">
             <input class="btnSignUp" type="submit" value="Sign up…">
         </div>
     </form>
 </div>
 
-<div id="divSignUpBack" style="text-align: center; margin-top: 10px;">
-    <button type="button" id="btnSignUpBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endblock %}

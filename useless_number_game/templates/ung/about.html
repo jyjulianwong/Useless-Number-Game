@@ -1,11 +1,8 @@
-{% extends "layout_app.html" %}
+{% extends "layout_user.html" %}
 
-{% block app_content %}
+{% block user_content %}
 
-<h1 align="center"> Useless Number Game. </h1>
-<h6 align="center"> It's what it says on the tin. </h6>
-
-<div style="margin-top: 25px;">
+<div class="section" style="text-align: left">
     <p1>
         Yes. It's. Literally. A. Useless. Number. Game.
         I honestly don't know how I can put it to you any more clearer than that.
@@ -16,7 +13,7 @@
     </p1>
 </div>
 
-<div style="text-align: center; margin-top: 25px;">
+<div class="section">
     <p2>
         Originally made, with literally zero love and care,
         by <a href="https://github.com/jyjulianwong/" target="_blank">a total crackhead</a> in 2018.
@@ -28,8 +25,8 @@
     </p2>
 </div>
 
-<div style="text-align: center; margin-top: 50px;">
-    <button type="button" id="btnAboutBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endblock %}

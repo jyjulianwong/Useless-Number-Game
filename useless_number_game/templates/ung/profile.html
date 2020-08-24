@@ -1,21 +1,15 @@
-{% extends "layout_app.html" %}
+{% extends "layout_user.html" %}
 
-{% block app_content %}
+{% block user_content %}
 
 {% if 'username' in session %}
 
 <h1 align="center"><u> {{ session['username'] }} </u></h1>
 <h6 align="center"> A useless player since {{ sign_up_date }}. </h6>
 
-<div style="text-align: center; margin-top: 50px;">
+<div class="section">
     <button type="button" id="btnStartProfileChangePassword" class="buttonNav" onclick="window.location.href='profile/change-password'">Change my password.</button>
-</div>
-
-<div style="text-align: center">
     <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
-</div>
-
-<div style="text-align: center">
     <button type="button" id="btnStartProfileDelete" class="buttonRed" onclick="window.location.href='profile/delete'">Delete me!</button>
 </div>
 
@@ -26,8 +20,8 @@
 
 {% endif %}
 
-<div id="divProfileBack" style="text-align: center; margin-top: 50px;">
-    <button type="button" id="btnProfileBack" class="buttonNav" onclick="window.location.href='home'">Back…</button>
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='home'">Back…</button>
 </div>
 
 {% endblock %}

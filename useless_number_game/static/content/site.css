@@ -11,6 +11,11 @@ html, body {
     padding: 15px;
 }
 
+.section {
+    margin-top: 25px;
+    text-align: center;
+}
+
 statusBar {
     display: block;
     padding: 15px 15px;
