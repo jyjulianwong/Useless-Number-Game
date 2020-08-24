@@ -3,21 +3,21 @@
 {% block user_content %}
 
 <div class="section">
-    <button type="button" id="btnStart" class="buttonNav" onclick="window.location.href='main'">I am bored.</button>
-    <button type="button" id="btnAbout" class="buttonNav" onclick="window.location.href='about'">What is this?</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/main'">I am bored.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/about'">What is this?</button>
 </div>
 
 {% if 'username' in session %}
 
 <div class="section">
-    <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
+    <button type="button" class="buttonRed" onclick="window.location.href='ung/signout'">Sign me out.</button>
 </div>
 
 {% else %}
 
 <div class="section">
-    <button type="button" id="btnStartSignUp" class="buttonNav" onclick="window.location.href='signup'">Sign me up.</button>
-    <button type="button" id="btnStartSignIn" class="buttonNav" onclick="window.location.href='signin'">Sign me in.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/signup'">Sign me up.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/signin'">Sign me in.</button>
 </div>
 
 {% endif %}

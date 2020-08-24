@@ -23,13 +23,17 @@ def get_player_status():
 
 
 @app.route('/')
-@app.route('/home')
 def home():
-	return render_template('home.html', player_status=get_player_status())
+	return render_template('home.html')
 
 
-@app.route('/signup', methods=['GET', 'POST'])
-def sign_up():
+@app.route('/ung/')
+def ung_home():
+	return render_template('ung/home.html', player_status=get_player_status())
+
+
+@app.route('/ung/signup', methods=['GET', 'POST'])
+def ung_sign_up():
 	error = None
 	is_username_inval = False
 	inval_chars = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '=', '+', '[', '{', ']', '}', '|', ';',
@@ -56,48 +60,48 @@ def sign_up():
 				{'username': request.form['username'], 'password': generate_password_hash(request.form['password']),
 				 'signUpDate': str(sign_up_date.strftime("%Y-%m-%d"))})
 			session['username'] = request.form['username']
-			return redirect(url_for('home'))
-	return render_template('signup.html', error=error)
+			return redirect(url_for('ung_home'))
+	return render_template('ung/signup.html', error=error)
 
 
-@app.route('/signin', methods=['GET', 'POST'])
-def sign_in():
+@app.route('/ung/signin', methods=['GET', 'POST'])
+def ung_sign_in():
 	error = None
 	if request.method == 'POST':
 		player = players.find_one({'username': request.form['username']})
 		if player:
 			if check_password_hash(player['password'], request.form['password']):
 				session['username'] = request.form['username']
-				return redirect(url_for('home'))
+				return redirect(url_for('ung_home'))
 			else:
 				error = "You've got the wrong username or password, mate."
 		else:
 			error = "You've got the wrong username, mate."
-	return render_template('signin.html', error=error)
+	return render_template('ung/signin.html', error=error)
 
 
-@app.route('/signout')
-def sign_out():
+@app.route('/ung/signout')
+def ung_sign_out():
 	session.clear()
-	return render_template('signout.html')
+	return render_template('ung/signout.html')
 
 
-@app.route('/main')
-def main():
-	return render_template('main.html', player_status=get_player_status())
+@app.route('/ung/main')
+def ung_main():
+	return render_template('ung/main.html', player_status=get_player_status())
 
 
-@app.route('/profile')
-def profile():
+@app.route('/ung/profile')
+def ung_profile():
 	if 'username' in session:
 		sign_up_date = players.distinct('signUpDate', {'username': session['username']})[0]
 	elif 'username' not in session:
 		sign_up_date = None
-	return render_template('profile.html', player_status=get_player_status(), sign_up_date=sign_up_date)
+	return render_template('ung/profile.html', player_status=get_player_status(), sign_up_date=sign_up_date)
 
 
-@app.route('/profile/change-password', methods=['GET', 'POST'])
-def profile_change_password():
+@app.route('/ung/profile/change-password', methods=['GET', 'POST'])
+def ung_profile_change_password():
 	error = None
 	current_username = session['username']
 	if request.method == 'POST':
@@ -109,28 +113,28 @@ def profile_change_password():
 			if request.form['newPassword'] == request.form['newPasswordConfirm']:
 				players.update({'username': session['username']},
 							   {'$set': {'password': generate_password_hash(request.form['newPassword'])}})
-				return redirect(url_for('profile_change_password_confirm'))
+				return redirect(url_for('ung_profile_change_password_confirm'))
 			else:
 				error = "Your passwords aren't the same. Try again…"
 		else:
 			error = "You've got the wrong password, mate. Try again…"
-	return render_template('profile_change-password.html', error=error, current_username=current_username)
+	return render_template('ung/profile_change-password.html', error=error, current_username=current_username)
 
 
-@app.route('/profile/change-password/confirm')
-def profile_change_password_confirm():
-	return render_template('profile_change-password_confirm.html')
+@app.route('/ung/profile/change-password/confirm')
+def ung_profile_change_password_confirm():
+	return render_template('ung/profile_change-password_confirm.html')
 
 
-@app.route('/profile/delete', methods=['GET', 'POST'])
+@app.route('/ung/profile/delete', methods=['GET', 'POST'])
 def profile_delete():
 	if request.method == 'POST':
 		players.remove({'username': session['username']})
 		session.clear()
-		return redirect(url_for('home'))
-	return render_template('profile_delete.html')
+		return redirect(url_for('ung_home'))
+	return render_template('ung/profile_delete.html')
 
 
-@app.route('/about')
+@app.route('/ung/about')
 def about():
-	return render_template('about.html', player_status=get_player_status())
+	return render_template('ung/about.html', player_status=get_player_status())

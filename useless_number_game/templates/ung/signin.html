@@ -7,7 +7,7 @@
 <div class="container" align="center" style="margin-top: 25px">
     <h6>Sign in right here, human…</h6>
     <br />
-    <form action="{{ url_for('sign_in') }}" method="post">
+    <form action="{{ url_for('ung_sign_in') }}" method="post">
         <input type="text" placeholder="What's your username?" name="username" value="{{ request.form['username'] }}">
         <br />
         <input type="password" placeholder="What's your password?" name="password" value="{{ request.form['password'] }}">
@@ -22,7 +22,7 @@
 </div>
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='home'">Back…</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/home'">Back…</button>
 </div>
 
 {% endblock %}

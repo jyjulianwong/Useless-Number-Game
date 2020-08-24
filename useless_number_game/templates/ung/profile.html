@@ -8,9 +8,9 @@
 <h6 align="center"> A useless player since {{ sign_up_date }}. </h6>
 
 <div class="section">
-    <button type="button" id="btnStartProfileChangePassword" class="buttonNav" onclick="window.location.href='profile/change-password'">Change my password.</button>
-    <button type="button" id="btnStartSignOut" class="buttonRed" onclick="window.location.href='signout'">Sign me out.</button>
-    <button type="button" id="btnStartProfileDelete" class="buttonRed" onclick="window.location.href='profile/delete'">Delete me!</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/profile/change-password'">Change my password.</button>
+    <button type="button" class="buttonRed" onclick="window.location.href='ung/signout'">Sign me out.</button>
+    <button type="button" class="buttonRed" onclick="window.location.href='ung/profile/delete'">Delete me!</button>
 </div>
 
 {% else %}
@@ -21,7 +21,7 @@
 {% endif %}
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='home'">Back…</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='ung/home'">Back…</button>
 </div>
 
 {% endblock %}
