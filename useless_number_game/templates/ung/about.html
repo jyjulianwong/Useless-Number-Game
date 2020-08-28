@@ -1,4 +1,4 @@
-{% extends "layout_user.html" %}
+{% extends "ung/layout_user.html" %}
 
 {% block user_content %}
 
@@ -10,23 +10,14 @@
         Seriously though, unless you are catastrophically dumb or life-threateningly bored, I wouldn't exactly recommend this to anyone.
         Just do something more productive and you'll be fine.
         And for the record, this is a Google font, not goddamn Comic Sans.
+        <br />
+        For more information, view the <a href="https://github.com/jyjulianwong/exercise-useless-number-game" target="_blank">GitHub repository</a>
+        for this website to see how it was made.
     </p1>
 </div>
 
 <div class="section">
-    <p2>
-        Originally made, with literally zero love and care,
-        by <a href="https://github.com/jyjulianwong/" target="_blank">a total crackhead</a> in 2018.
-    </p2>
-    <br />
-    <p2>
-        For more information, view the <a href="https://github.com/jyjulianwong/exercise-useless-number-game" target="_blank">GitHub repository</a>
-        for this website to see how it was made.
-    </p2>
-</div>
-
-<div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='ung/home'">Back…</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_home') }}'">Back…</button>
 </div>
 
 {% endblock %}

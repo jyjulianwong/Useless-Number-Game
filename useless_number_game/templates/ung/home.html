@@ -1,32 +1,25 @@
-{% extends "layout_user.html" %}
+{% extends "ung/layout_user.html" %}
 
 {% block user_content %}
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='ung/main'">I am bored.</button>
-    <button type="button" class="buttonNav" onclick="window.location.href='ung/about'">What is this?</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_main') }}'">Bored.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_about') }}'">Wtf is this?</button>
 </div>
 
 {% if 'username' in session %}
 
 <div class="section">
-    <button type="button" class="buttonRed" onclick="window.location.href='ung/signout'">Sign me out.</button>
+    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('ung_sign_out') }}'">Sign out.</button>
 </div>
 
 {% else %}
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='ung/signup'">Sign me up.</button>
-    <button type="button" class="buttonNav" onclick="window.location.href='ung/signin'">Sign me in.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_sign_up') }}'">Sign up.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_sign_in') }}'">Sign in.</button>
 </div>
 
 {% endif %}
-
-<div class="section">
-    <p2>
-        Originally made, with literally zero love and care,
-        by <a href="https://github.com/jyjulianwong/" target="_blank">a total crackhead</a> in 2018.
-    </p2>
-</div>
 
 {% endblock %}

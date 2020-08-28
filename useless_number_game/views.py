@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from useless_number_game import app
 
 app.config['MONGO_DBNAME'] = 'uselessnumbergame_players'
-app.config['MONGO_URI'] = 'mongodb://uselessNumberGame:0000@ds012198.mlab.com:12198/uselessnumbergame_players'
+app.config['MONGO_URI'] = 'mongodb://uselessNumberGame:0000@ds012198.mlab.com:12198/uselessnumbergame_players?retryWrites=false'
 useless_number_game_players = PyMongo(app)
 players = useless_number_game_players.db.users
 
@@ -127,7 +127,7 @@ def ung_profile_change_password_confirm():
 
 
 @app.route('/ung/profile/delete', methods=['GET', 'POST'])
-def profile_delete():
+def ung_profile_delete():
 	if request.method == 'POST':
 		players.remove({'username': session['username']})
 		session.clear()
@@ -136,5 +136,5 @@ def profile_delete():
 
 
 @app.route('/ung/about')
-def about():
+def ung_about():
 	return render_template('ung/about.html', player_status=get_player_status())
