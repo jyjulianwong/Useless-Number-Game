@@ -26,7 +26,7 @@ def ung_home():
 	return render_template('ung/home.html', player_status=get_player_status())
 
 
-@app.route('/ung/signup', methods=['GET', 'POST'])
+@app.route('/ung/sign-up', methods=['GET', 'POST'])
 def ung_sign_up():
 	error = None
 	is_username_inval = False
@@ -62,7 +62,7 @@ def ung_sign_up():
 	return render_template('ung/signup.html', error=error)
 
 
-@app.route('/ung/signin', methods=['GET', 'POST'])
+@app.route('/ung/sign-in', methods=['GET', 'POST'])
 def ung_sign_in():
 	error = None
 	if request.method == 'POST':
@@ -78,7 +78,7 @@ def ung_sign_in():
 	return render_template('ung/signin.html', error=error)
 
 
-@app.route('/ung/signout')
+@app.route('/ung/sign-out')
 def ung_sign_out():
 	session.clear()
 	return render_template('ung/signout.html')
@@ -98,7 +98,7 @@ def ung_player_profile(username):
 	else:
 		return redirect(url_for('ung_home'))
 	return render_template(
-		'ung/profile.html',
+		'ung/player_profile.html',
 		username=username,
 		player_status=get_player_status(),
 		sign_up_date=sign_up_date
@@ -127,12 +127,12 @@ def ung_player_change_password(username):
 				error = "Your passwords aren't the same. Try again…"
 		else:
 			error = "You've got the wrong password, mate. Try again…"
-	return render_template('ung/profile_change-password.html', error=error, username=username)
+	return render_template('ung/player_changepassword.html', error=error, username=username)
 
 
 @app.route('/ung/player/<username>/change-password/confirm')
 def ung_player_change_password_confirm(username):
-	return render_template('ung/profile_change-password_confirm.html')
+	return render_template('ung/player_changepassword_confirm.html')
 
 
 @app.route('/ung/player/<username>/delete', methods=['GET', 'POST'])
@@ -142,7 +142,7 @@ def ung_player_delete(username):
 			players.remove({'username': username})
 			session.clear()
 		return redirect(url_for('ung_home'))
-	return render_template('ung/profile_delete.html')
+	return render_template('ung/player_delete.html')
 
 
 @app.route('/ung/about')
