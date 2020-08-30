@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<div class="container" align="center">
-    <h6>Sign up right here, human…</h6>
+<div class="section">
+    <h2>Sign up right here, human…</h2>
     <br />
     <form action="{{ url_for('ung_sign_up') }}" method="post">
         <input type="text" placeholder="Your new username?" name="username" value="{{ request.form['username'] }}">
@@ -12,11 +12,15 @@
         <br />
         <input type="password" placeholder="Your new password, once more?" name="passwordConfirm" value="{{ request.form['passwordConfirm'] }}">
         <br />
-        {% if error != None %}
-        <p2 style="text-align: center">{{ error }}</p2>
+
+        {% if error %}
+
+        <p2><err>{{ error }}</err></p2>
+
         {% endif %}
-        <div id="divSignUp" class="section">
-            <input class="btnSignUp" type="submit" value="Sign up…">
+
+        <div class="section">
+            <input type="submit" class="buttonNav" value="Sign up…">
         </div>
     </form>
 </div>

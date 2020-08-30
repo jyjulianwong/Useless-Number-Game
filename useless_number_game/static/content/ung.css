@@ -42,7 +42,7 @@ h1 {
     text-shadow: 2px 2px 4px #000000; 
 }
 
-h6 {
+h2 {
     font-family: "Patrick Hand";
     font-size: 32px;
     line-height: normal;
@@ -55,14 +55,6 @@ p1 {
     font-size: 24px;
     line-height: normal;
     color: #ffffff;
-    text-shadow: 2px 2px 4px #000000;
-}
-
-p1-red {
-    font-family: "Patrick Hand";
-    font-size: 24px;
-    line-height: normal;
-    color: #ff9988;
     text-shadow: 2px 2px 4px #000000;
 }
 
@@ -80,6 +72,10 @@ p3 {
     line-height: normal;
     color: #ffffff;
     text-shadow: 2px 2px 4px #000000;
+}
+
+err {
+    color: #ff9988;
 }
 
 a:link {
@@ -128,7 +124,7 @@ a:active {
         transform: scale(1.05, 1.05)
     }
 
-    button.buttonNav:active {
+    .buttonNav:active {
         transform: rotate(-2.5deg);
     }
 
@@ -234,30 +230,4 @@ input[type=password]::-moz-placeholder {
 
     input[type=password]:focus {
         transform: scale(1.025, 1.025)
-    }
-
-input[type=submit] {
-    width: 300px;
-    padding: 15px;
-    cursor: pointer;
-    font-family: "Patrick Hand";
-    font-size: 28px;
-    text-shadow: 2px 2px 4px #000000;
-    background: #00cc99;
-    color: #ffffff;
-    border: 0px solid #00cc99;
-    border-radius: 25px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
-    transition-duration: 0.25s;
-}
-
-    input[type=submit]:hover {
-        color: #ffffff;
-        background: #11ddaa;
-        border: 0px solid #11ddaa;
-        transform: scale(1.05, 1.05)
-    }
-
-    input[type=submit]:active {
-        transform: rotate(-2.5deg);
     }

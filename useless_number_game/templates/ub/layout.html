@@ -5,23 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why are you even here?</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static/content/home.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/ung.css" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto+Mono">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Patrick+Hand">
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 
 <body>
     <div class="bg bg_hamster">
-        <h2 align="center">Why are you even here?</h2>
-        <div class="section">
-            <button type="button" class="buttonNav" onclick="">Useless Blog</button>
-            <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_home') }}'">Useless Number Game</button>
-        </div>
-
+        {% block content %}{% endblock %}
         <script src="/static/scripts/jquery-1.10.2.js"></script>
         <script src="/static/scripts/bootstrap.js"></script>
         <script src="/static/scripts/respond.js"></script>
+        {% block scripts %}{% endblock %}
     </div>
 </body>
 </html>

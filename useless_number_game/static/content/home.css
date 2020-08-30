@@ -27,7 +27,7 @@ h1 {
     text-shadow: 2px 2px 4px #000000;
 }
 
-h6 {
+h2 {
     font-family: "Roboto Mono";
     font-size: 32px;
     line-height: normal;
@@ -44,14 +44,14 @@ p1 {
 }
 
 .buttonNav {
-    width: 400px;
+    width: 75%;
     margin: 10px;
     padding: 15px;
     cursor: pointer;
     font-family: "Roboto Mono";
-    font-size: 28px;
+    font-size: 20px;
     text-shadow: 2px 2px 4px #000000;
-    background: #ffc0cb;
+    background: #ffc0cbaa;
     color: #ffffff;
     border: 0px solid #ffc0cb;
     border-radius: 25px;
@@ -60,11 +60,11 @@ p1 {
 }
 
     .buttonNav:hover {
-        background: #eeb0ba;
+        background: #eeb0baaa;
         border: 0px solid #eeb0ba;
         transform: scale(1.05, 1.05)
     }
 
-    button.buttonNav:active {
+    .buttonNav:active {
         transform: rotate(-2.5deg);
     }

@@ -2,21 +2,16 @@
 
 {% block user_content %}
 
-{% if 'username' in session %}
+<h1 align="center"><u> {{ username }} </u></h1>
+<h2 align="center"> A useless player since {{ sign_up_date }}. </h2>
 
-<h1 align="center"><u> {{ session['username'] }} </u></h1>
-<h6 align="center"> A useless player since {{ sign_up_date }}. </h6>
+{% if session['username'] == username %}
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_profile_change_password') }}'">Change my password.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_player_change_password', username=username) }}'">Change my password.</button>
     <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('ung_sign_out') }}'">Sign out.</button>
-    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('ung_profile_delete') }}'">Delete me!</button>
+    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('ung_player_delete', username=username) }}'">Delete me!</button>
 </div>
-
-{% else %}
-
-<h1 align="center"> Hey there, human! </h1>
-<h6 align="center"> Why the hell are you even here? </h6>
 
 {% endif %}
 
