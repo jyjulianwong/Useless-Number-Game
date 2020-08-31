@@ -14,19 +14,17 @@ players = PyMongo(app).db.users
 
 
 def get_player_status():
-	if 'username' in session:
-		player_status = 'Welcome, ' + session['username'] + '!'
-	elif 'username' not in session:
-		player_status = 'Oh, hi loser! Want to sign in?'
-	return player_status
+	return ('Welcome, ' + session['username'] + '!') if ('username' in session) else 'Oh, hi loser! Want to sign in?'
 
 
+@app.route('/ung')
 @app.route('/ung/')
 def ung_home():
 	return render_template('ung/home.html', player_status=get_player_status())
 
 
 @app.route('/ung/sign-up', methods=['GET', 'POST'])
+@app.route('/ung/sign-up/', methods=['GET', 'POST'])
 def ung_sign_up():
 	error = None
 	is_username_inval = False
@@ -35,10 +33,8 @@ def ung_sign_up():
 	if request.method == 'POST':
 		player = players.find_one({'username': request.form['username']})
 		for n in inval_chars:
-			if not is_username_inval:
-				if n in request.form['username']:
-					is_username_inval = True
-		if player is not None:
+			is_username_inval = not is_username_inval and (n in request.form['username'])
+		if player:
 			error = "Someone's taken that username. Sorry."
 		elif request.form['username'] == '':
 			error = 'Actually enter a username, please…'
@@ -63,6 +59,7 @@ def ung_sign_up():
 
 
 @app.route('/ung/sign-in', methods=['GET', 'POST'])
+@app.route('/ung/sign-in/', methods=['GET', 'POST'])
 def ung_sign_in():
 	error = None
 	if request.method == 'POST':
@@ -79,33 +76,42 @@ def ung_sign_in():
 
 
 @app.route('/ung/sign-out')
+@app.route('/ung/sign-out/')
 def ung_sign_out():
 	session.clear()
 	return render_template('ung/signout.html')
 
 
 @app.route('/ung/main')
+@app.route('/ung/main/')
 def ung_main():
 	return render_template('ung/main.html', player_status=get_player_status())
 
 
+@app.route('/ung/player-error')
+@app.route('/ung/player-error/')
+def ung_player_error():
+	return render_template('ung/playererror.html')
+
+
 @app.route('/ung/player/<username>')
+@app.route('/ung/player/<username>/')
 def ung_player_profile(username):
 	player = players.find_one({'username': username})
 	if player:
 		username = player['username']
 		sign_up_date = player['signUpDate']
-	else:
-		return redirect(url_for('ung_home'))
-	return render_template(
-		'ung/player_profile.html',
-		username=username,
-		player_status=get_player_status(),
-		sign_up_date=sign_up_date
-	)
+		return render_template(
+			'ung/player_profile.html',
+			username=username,
+			player_status=get_player_status(),
+			sign_up_date=sign_up_date
+		)
+	return redirect(url_for('ung_player_error'))
 
 
 @app.route('/ung/player/<username>/change-password', methods=['GET', 'POST'])
+@app.route('/ung/player/<username>/change-password/', methods=['GET', 'POST'])
 def ung_player_change_password(username):
 	if session['username'] != username:
 		return redirect(url_for('ung_home'))
@@ -131,11 +137,13 @@ def ung_player_change_password(username):
 
 
 @app.route('/ung/player/<username>/change-password/confirm')
+@app.route('/ung/player/<username>/change-password/confirm/')
 def ung_player_change_password_confirm(username):
 	return render_template('ung/player_changepassword_confirm.html')
 
 
 @app.route('/ung/player/<username>/delete', methods=['GET', 'POST'])
+@app.route('/ung/player/<username>/delete/', methods=['GET', 'POST'])
 def ung_player_delete(username):
 	if request.method == 'POST':
 		if session['username'] == username:
@@ -146,5 +154,6 @@ def ung_player_delete(username):
 
 
 @app.route('/ung/about')
+@app.route('/ung/about/')
 def ung_about():
 	return render_template('ung/about.html', player_status=get_player_status())
