@@ -2,15 +2,24 @@
 Routes and views for the flask application.
 """
 
-import flask, datetime
+import flask, ssl, datetime
 from flask import Flask, Config, render_template, url_for, request, session, redirect
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from useless_number_game import app
 
-app.config['MONGO_DBNAME'] = 'uselessnumbergame_players'
-app.config['MONGO_URI'] = 'mongodb://uselessNumberGame:0000@ds012198.mlab.com:12198/uselessnumbergame_players?retryWrites=false'
-players = PyMongo(app).db.users
+cluster_username = 'admin'
+cluster_password = 'admin'
+cluster_dbname = 'useless-number-game'
+
+app.config['MONGO_DBNAME'] = cluster_dbname
+app.config['MONGO_URI'] = 'mongodb+srv://{}:{}@useless-number-game.idxzf.azure.mongodb.net/{}?retryWrites=false&w=majority'.format(
+	cluster_username,
+	cluster_password,
+	cluster_dbname
+)
+
+players = PyMongo(app, ssl=True, ssl_cert_reqs=ssl.CERT_NONE).db.players
 
 
 def get_player_status():
