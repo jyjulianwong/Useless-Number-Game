@@ -1,0 +1,70 @@
+html, body {
+    height: 100%;
+}
+
+.bg {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 15px;
+}
+
+.bg_jamesmay {
+    background-image: url("bg_jamesmay.png");
+}
+
+.section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Roboto Mono";
+    font-size: 40px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+h2 {
+    font-family: "Roboto Mono";
+    font-size: 32px;
+    line-height: normal;
+    color: #eeeeee;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p1 {
+    font-family: "Roboto Mono";
+    font-size: 24px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.buttonNav {
+    width: 75%;
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Roboto Mono";
+    font-size: 20px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #ffc0cbaa;
+    color: #ffffff;
+    border: 0px solid #ffc0cb;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    .buttonNav:hover {
+        background: #eeb0baaa;
+        border: 0px solid #eeb0ba;
+        transform: scale(1.05, 1.05)
+    }
+
+    .buttonNav:active {
+        transform: rotate(-2.5deg);
+    }
