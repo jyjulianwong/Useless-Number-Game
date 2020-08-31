@@ -15,7 +15,7 @@ html, body {
 }
 
 .section {
-    margin-top: 50px;
+    margin-top: 25px;
     text-align: center;
 }
 
@@ -43,6 +43,19 @@ p1 {
     text-shadow: 2px 2px 4px #000000;
 }
 
+p2 {
+    font-family: "Roboto Mono";
+    font-size: 20px;
+    line-height: normal;
+    color: #eeeeee;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+err {
+    color: #ff9988;
+}
+
+
 .buttonNav {
     width: 75%;
     margin: 10px;
@@ -67,4 +80,36 @@ p1 {
 
     .buttonNav:active {
         transform: rotate(-2.5deg);
+    }
+
+input[type=text], select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    font-family: "Roboto Mono";
+    font-size: 20px;
+    background: #00cc99;
+    color: #ffffff;
+    border: 1px solid #00eebb;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+input[type=text]::-webkit-input-placeholder {
+    color: #00eebb
+}
+
+input[type=text]:-ms-input-placeholder {
+    color: #00eebb
+}
+
+input[type=text]::-moz-placeholder {
+    color: #00eebb
+}
+
+    input[type=text]:focus {
+        transform: scale(1.025, 1.025)
     }

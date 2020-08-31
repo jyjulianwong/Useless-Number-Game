@@ -22,6 +22,10 @@ app.config['MONGO_URI'] = 'mongodb+srv://{}:{}@useless-number-game.idxzf.azure.m
 nodes = PyMongo(app, ssl=True, ssl_cert_reqs=ssl.CERT_NONE).db.nodes
 
 
+def is_node_full(node):
+	return node['left'] != '' and node['right'] != ''
+
+
 @app.route('/uobt')
 @app.route('/uobt/')
 def uobt_home():
@@ -31,4 +35,41 @@ def uobt_home():
 @app.route('/uobt/tree/add', methods=['GET', 'POST'])
 @app.route('/uobt/tree/add/', methods=['GET', 'POST'])
 def uobt_tree_add():
-	return render_template('uobt/tree_add.html')
+	error = None
+
+	if request.method == 'POST':
+		new_node_exists = nodes.find_one({'key': request.form['key']})
+		parent = nodes.find_one({'key': request.form['parent']})
+
+		if new_node_exists:
+			error = 'A node with that name already exists. Sorry.'
+		elif request.form['key'] == '' or request.form['item'] == '' or request.form['parent'] == '':
+			error = 'Dude, fill in the goddamn form, come on…'
+		elif parent is None:
+			error = 'That parent node does not exist. Oops!'
+		elif is_node_full(parent):
+			error = 'That parent node is already full!'
+		else:
+			author = session['username'] if 'username' in session else 'Unknown'
+			new_node = {
+				'key': request.form['key'],
+				'author': author,
+				'dateAdded': str(datetime.datetime.now().strftime("%Y-%m-%d")),
+				'item': request.form['item'],
+				'left': '',
+				'right': ''
+			}
+
+			if parent['left'] == '':
+				nodes.update(
+					{'key': request.form['parent']},
+					{'$set': {'left': request.form['key']}}
+				)
+			else:
+				nodes.update(
+					{'key': request.form['parent']},
+					{'$set': {'right': request.form['key']}}
+				)
+			nodes.insert(new_node)
+			# TODO: Clear form after submission
+	return render_template('uobt/tree_add.html', error=error)
