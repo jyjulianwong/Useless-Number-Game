@@ -1,9 +1,7 @@
-var timerInit = 10;
-
-var play = 0;
-var opMode = 0;
+var isPlaying = false;
 var number1 = 0;
 var number2 = 0;
+var symbolValue = 0;
 var symbol = "";
 var answer = 0;
 var answerA = 0;
@@ -15,29 +13,35 @@ var answeredCorrect = 0;
 var scorePercent = 0;
 var timerValue = 0;
 
+const timerInit = 10;
+
 const uselessStatements1 = [
-  "This is stupid…",
-  "Do something more productive…",
-  "Okay, I'm bored as well…",
-  "Why are you still here?!"
+    "This is stupid…",
+    "Do something more productive…",
+    "Okay, I'm bored as well…",
+    "Why are you still here?!"
 ];
 
 const uselessStatements2 = [
-  "Are you really that bored?",
-  "Get a life.",
-  "Bored coding this stupid website.",
-  "There's more to life than this."
+    "Are you really that bored?",
+    "Get a life.",
+    "Bored coding this stupid website.",
+    "There's more to life than this."
 ];
 
-function precisionRound(number, precision) {
+function roundToDecimal(number, precision) {
     var numberStr = number.toFixed(precision);
     numberRnd = parseFloat(numberStr);
     return numberRnd;
 }
 
+function createAnswerOffset() {
+    return Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+}
+
 function init() {
-    play = 0;
-    opMode = 0;
+    isPlaying = false;
+    symbolValue = 0;
     number1 = 0;
     number2 = 0;
     symbol = "";
@@ -63,23 +67,22 @@ function init() {
 }
 
 function start() {
-    play = 1;
-    quesGenerate(1);
+    isPlaying = true;
     document.getElementById("divStart").style.display = 'none';
     document.getElementById("timer").style.display = 'block';
-    // document.getElementById('divMainBack').style.marginTop = '50px';
     document.getElementById("question").style.color = "#ffffff";
+    createNewQuestion(true);
 
     timerValue = timerInit + 1;
     timerUpdate();
-    timerRefer = setInterval(timerUpdate, 1000);
+    timer = setInterval(timerUpdate, 1000);
 }
 
-function quesGenerate(start) {
+function createNewQuestion(isFirstQuestion) {
     number1 = Math.floor((Math.random() * 50) + 5);
     number2 = Math.floor((Math.random() * 50) + 5);
-    opMode = Math.floor((Math.random() * 4)) + 1;
-    switch (opMode) {
+    symbolValue = Math.floor((Math.random() * 4)) + 1;
+    switch (symbolValue) {
         case 1:
             answer = number1 + number2;
             symbol = " + ";
@@ -92,46 +95,38 @@ function quesGenerate(start) {
             answer = number1 * number2;
             symbol = " * ";
             break;
-        case 4:
+        default:
             answer = number1 / number2;
             symbol = " / ";
             break;
-        default:
-            answer = number1 + number2;
-            symbol = " + ";
     }
 
     let randomOption = Math.floor((Math.random() * 4)) + 1;
     switch (randomOption) {
         case 1:
             answerA = answer;
-            answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+            answerB = answer + createAnswerOffset();
+            answerC = answer + createAnswerOffset();
+            answerD = answer + createAnswerOffset();
             break;
         case 2:
-            answerA = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+            answerA = answer + createAnswerOffset();
             answerB = answer;
-            answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+            answerC = answer + createAnswerOffset();
+            answerD = answer + createAnswerOffset();
             break;
         case 3:
-            answerA = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+            answerA = answer + createAnswerOffset();
+            answerB = answer + createAnswerOffset();
             answerC = answer;
-            answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            break;
-        case 4:
-            answerA = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerD = answer;
+            answerD = answer + createAnswerOffset();
             break;
         default:
-            answerA = answer;
-            answerB = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerC = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
-            answerD = answer + Math.floor((Math.random() * 25)) - Math.floor((Math.random() * 25));
+            answerA = answer + createAnswerOffset();
+            answerB = answer + createAnswerOffset();
+            answerC = answer + createAnswerOffset();
+            answerD = answer;
+            break;
     }
 
     checkRepeatedAnswers();
@@ -142,11 +137,11 @@ function quesGenerate(start) {
         scorePercent = Math.round((answeredCorrect / answeredTotal) * 100);
     }
 
-    answer = precisionRound(answer, 2);
-    answerA = precisionRound(answerA, 2);
-    answerB = precisionRound(answerB, 2);
-    answerC = precisionRound(answerC, 2);
-    answerD = precisionRound(answerD, 2);
+    answer = roundToDecimal(answer, 2);
+    answerA = roundToDecimal(answerA, 2);
+    answerB = roundToDecimal(answerB, 2);
+    answerC = roundToDecimal(answerC, 2);
+    answerD = roundToDecimal(answerD, 2);
     document.getElementById("question").innerHTML = String(number1) + symbol + String(number2);
     document.getElementById("score").innerHTML = "Your score is " + String(answeredCorrect) + " / " + String(answeredTotal) + ", or " + String(scorePercent) + "%.";
     document.getElementById("btnAnswerA").innerHTML = String(answerA);
@@ -154,7 +149,7 @@ function quesGenerate(start) {
     document.getElementById("btnAnswerC").innerHTML = String(answerC);
     document.getElementById("btnAnswerD").innerHTML = String(answerD);
 
-    if (start == 0) {
+    if (!isFirstQuestion) {
         checkIsGameOver();
     }
 }
@@ -163,7 +158,7 @@ function timerUpdate() {
     if (timerValue == 0) {
         answeredTotal += 1;
         timerValue = timerInit;
-        quesGenerate(0);
+        createNewQuestion(false);
         document.getElementById("timer").innerHTML = "You've got " + String(timerInit) + " seconds left.";
     } else {
         timerValue -= 1;
@@ -177,13 +172,13 @@ function timerUpdate() {
 
 function checkRepeatedAnswers() {
     if (answerA == answerB || answerA == answerC || answerA == answerD || answerB == answerC || answerB == answerD || answerC == answerD) {
-        quesGenerate(0);
+        createNewQuestion(false);
     }
 }
 
 function checkIsGameOver() {
     if (scorePercent < 50) {
-        clearInterval(timerRefer);
+        clearInterval(timer);
         init();
         document.getElementById("question").style.color = "#ff9988";
         document.getElementById("question").innerHTML = "You've failed the test. Again?";
@@ -208,80 +203,16 @@ function checkAnswer(option) {
             break;
     }
 
-    if (play == 1) {
+    if (isPlaying) {
         answeredTotal += 1;
         timerValue = timerInit + 1;
         if (selectedAnswer == String(answer)) {
             answeredCorrect += 1;
         }
-        quesGenerate(0);
+        createNewQuestion(false);
     } else {
         let randomIndex = Math.floor(Math.random() * uselessStatements1.length);
         document.getElementById("score").innerHTML = uselessStatements1[randomIndex];
         document.getElementById("question").innerHTML = uselessStatements2[randomIndex];
-    }
-}
-
-function answerAClick() {
-    if (play == 1) {
-        answeredTotal += 1;
-        timerValue = timerInit + 1;
-        if (answerA == String(answer)) {
-            answeredCorrect += 1;
-            quesGenerate(0);
-        } else {
-            quesGenerate(0);
-        }
-    } else {
-        document.getElementById("score").innerHTML = "This is stupid…";
-        document.getElementById("question").innerHTML = "Are you really that bored?";
-    }
-}
-
-function answerBClick() {
-    if (play == 1) {
-        answeredTotal += 1;
-        timerValue = timerInit + 1;
-        if (answerB == String(answer)) {
-            answeredCorrect += 1;
-            quesGenerate(0);
-        } else {
-            quesGenerate(0);
-        }
-    } else {
-        document.getElementById("score").innerHTML = "Do something more productive…";
-        document.getElementById("question").innerHTML = "Get a life, mate.";
-    }
-}
-
-function answerCClick() {
-    if (play == 1) {
-        answeredTotal += 1;
-        timerValue = timerInit + 1;
-        if (answerC == String(answer)) {
-            answeredCorrect += 1;
-            quesGenerate(0);
-        } else {
-            quesGenerate(0);
-        }
-    } else {
-        document.getElementById("score").innerHTML = "Okay, I'm bored as well…";
-        document.getElementById("question").innerHTML = "Bored coding this stupid website.";
-    }
-}
-
-function answerDClick() {
-    if (play == 1) {
-        answeredTotal += 1;
-        timerValue = timerInit + 1;
-        if (answerD == String(answer)) {
-            answeredCorrect += 1;
-            quesGenerate(0);
-        } else {
-            quesGenerate(0);
-        }
-    } else {
-        document.getElementById("score").innerHTML = "Why are you still here?!";
-        document.getElementById("question").innerHTML = "There's more to life than this.";
     }
 }

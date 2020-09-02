@@ -8,9 +8,9 @@
 
 <div class="section">
     <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('coming_soon') }}'">See the tree</button>
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('coming_soon') }}'">Navigate the tree</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('uobt_tree_navigate', key='root') }}'">Navigate the tree</button>
     <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('uobt_tree_add') }}'">Add to the tree</button>
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('coming_soon') }}'">Wtf is this?</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('uobt_about') }}'">Wtf is this?</button>
 </div>
 
 {% endblock %}

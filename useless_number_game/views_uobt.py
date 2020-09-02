@@ -32,6 +32,16 @@ def uobt_home():
 	return render_template('uobt/home.html')
 
 
+@app.route('/uobt/tree/navigate/<key>')
+@app.route('/uobt/tree/navigate/<key>/')
+# Pre: All values of key exist within the tree
+def uobt_tree_navigate(key):
+	node = nodes.find_one({'key': key})
+	child_left = nodes.find_one({'key': node['left']})
+	child_right = nodes.find_one({'key': node['right']})
+	return render_template('uobt/tree_navigate.html', node=node, child_left=child_left, child_right=child_right)
+
+
 @app.route('/uobt/tree/add', methods=['GET', 'POST'])
 @app.route('/uobt/tree/add/', methods=['GET', 'POST'])
 def uobt_tree_add():
@@ -73,3 +83,9 @@ def uobt_tree_add():
 			nodes.insert(new_node)
 			# TODO: Clear form after submission
 	return render_template('uobt/tree_add.html', error=error)
+
+
+@app.route('/uobt/about')
+@app.route('/uobt/about/')
+def uobt_about():
+	return render_template('uobt/about.html')

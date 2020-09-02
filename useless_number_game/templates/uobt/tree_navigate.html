@@ -1,0 +1,38 @@
+{% extends "uobt/layout.html" %}
+
+{% block content %}
+
+<div class="section">
+    <h2>Navigate the tree…</h2>
+</div>
+
+<div class="section">
+    <div class="node">
+        <p1>Name: {{ node['key'] }}<br />Description: {{ node['item'] }}<br /></p1>
+        <div class="section">
+            <p2>Created by: {{ node['author'] }}<br />Created on: {{ node['dateAdded'] }}<br /></p2>
+        </div>
+    </div>
+
+    <div class="section" style="display: flex; justify-content: center;">
+
+        {% if child_left %}
+
+        <div class="node nodeChild">
+            <p1>Name: <a href="{{ url_for('uobt_tree_navigate', key=child_left['key']) }}">{{ child_left['key'] }}</a></p1>
+        </div>
+
+        {% endif %}
+
+        {% if child_right %}
+
+        <div class="node nodeChild">
+            <p1>Name: <a href="{{ url_for('uobt_tree_navigate', key=child_right['key']) }}">{{ child_right['key'] }}</a></p1>
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

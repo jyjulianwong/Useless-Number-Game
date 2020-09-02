@@ -19,6 +19,21 @@ html, body {
     text-align: center;
 }
 
+.node {
+    width: 97.5%;
+    margin: 0px auto;
+    padding: 15px;
+    background: #888888;
+    border-radius: 25px;
+    box-shadow: 0px 0px 25px #444444;
+}
+
+.nodeChild {
+    float: left;
+    width: 47.5%;
+    background: #555555;
+}
+
 h1 {
     font-family: "Roboto Mono";
     font-size: 40px;
@@ -37,7 +52,7 @@ h2 {
 
 p1 {
     font-family: "Roboto Mono";
-    font-size: 24px;
+    font-size: 20px;
     line-height: normal;
     color: #ffffff;
     text-shadow: 2px 2px 4px #000000;
@@ -45,7 +60,7 @@ p1 {
 
 p2 {
     font-family: "Roboto Mono";
-    font-size: 20px;
+    font-size: 16px;
     line-height: normal;
     color: #eeeeee;
     text-shadow: 2px 2px 4px #000000;
