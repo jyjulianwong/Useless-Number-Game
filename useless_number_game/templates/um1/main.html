@@ -3,13 +3,13 @@
 {% block content %}
 
 <div class="section">
-    <audio id="babyImYoursNormal" src="/static/content/audio_um1_normal.mp3"></audio>
-    <audio id="babyImYoursExtreme" src="/static/content/audio_um1_extreme.mp3"></audio>
+    <audio id="babyImYoursNormal" preload="auto" src="/static/content/audio_um1_normal.mp3"></audio>
+    <audio id="babyImYoursExtreme" preload="auto" src="/static/content/audio_um1_extreme.mp3"></audio>
     <canvas id="memeCanvas" width="360px" height="360px"></canvas>
 </div>
 
 <div class="section">
-    <button type="button" id="btnCrackhead" class="buttonNav" onclick="animateMemeExtreme()">Wtf? 🔊</button>
+    <button type="button" id="btnCrackhead" class="buttonNav" onclick="animateMemeExtreme()" disabled>Loading…</button>
 </div>
 
 <div class="section">

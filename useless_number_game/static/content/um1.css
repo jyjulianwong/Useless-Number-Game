@@ -56,3 +56,12 @@ p {
         border: 0px solid #eeb0ba;
         transform: scale(1.05, 1.05)
     }
+
+.buttonRed {
+    font-size: 24px;
+    background: #ff4042cc;
+}
+
+    .buttonRed:hover {
+        background: #ee3031cc;
+    }
