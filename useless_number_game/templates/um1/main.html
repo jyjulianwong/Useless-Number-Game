@@ -1,0 +1,25 @@
+{% extends "um1/layout.html" %}
+
+{% block content %}
+
+<div class="section">
+    <audio id="babyImYoursNormal" src="/static/content/audio_um1_normal.mp3"></audio>
+    <audio id="babyImYoursExtreme" src="/static/content/audio_um1_extreme.mp3"></audio>
+    <canvas id="memeCanvas" width="360px" height="360px"></canvas>
+</div>
+
+<div class="section">
+    <button type="button" id="btnCrackhead" class="buttonNav" onclick="animateMemeExtreme()">Wtf? 🔊</button>
+</div>
+
+<div class="section">
+    <p>I can't even be bothered to explain what the fuck this is anymore.</p>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/scripts/useless_number_game.um1.main.js"></script>
+
+{% endblock %}
