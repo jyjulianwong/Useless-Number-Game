@@ -1,0 +1,24 @@
+{% extends "um2/layout.html" %}
+
+{% block content %}
+
+<div class="section">
+    <audio id="uwu" preload="auto" src="/static/content/audio_um2_uwu.mp3"></audio>
+    <canvas id="memeCanvas" width="360px" height="360px"></canvas>
+</div>
+
+<div class="section">
+    <button type="button" id="btnUwu" class="buttonNav" onclick="animateMeme()" disabled>Loading…</button>
+</div>
+
+<div class="section">
+    <p>I can't even be bothered to explain what the fuck this is anymore.</p>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/scripts/useless_number_game.um2.main.js"></script>
+
+{% endblock %}

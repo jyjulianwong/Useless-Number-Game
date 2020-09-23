@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+}
+
+.bg {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #eeeeee;
+    padding: 15px;
+}
+
+.section {
+    margin-top: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Roboto Mono";
+    font-size: 40px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p {
+    font-family: "Roboto Mono";
+    font-size: 18px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.buttonNav {
+    width: 75%;
+    margin: 5px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Roboto Mono";
+    font-size: 20px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #bbbbbbaa;
+    color: #ffffff;
+    border: 0px solid #ffc0cb;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    .buttonNav:hover {
+        background: #aaaaaaaa;
+        border: 0px solid #eeb0ba;
+        transform: scale(1.05, 1.05)
+    }
