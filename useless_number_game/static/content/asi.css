@@ -1,0 +1,102 @@
+html, body {
+    height: 100%;
+}
+
+.bg {
+    height: 100%;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 15px;
+}
+
+.bg_chalkboard {
+    background-image: url("bg_chalkboard.png");
+}
+
+.section {
+    margin: 25px;
+    text-align: center;
+}
+
+statusBar {
+    display: block;
+    padding: 15px 15px;
+    background-color: rgba(200, 200, 200, 0.50);
+    text-align: center;
+    border: 5px solid rgba(255, 255, 255, 0.50);
+    border-radius: 15px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    statusBar:hover {
+        background-color: rgba(255, 255, 255, 0.65);
+    }
+
+h1 {
+    font-family: "Indie Flower";
+    font-size: 28px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000; 
+}
+
+p {
+    font-family: "Indie Flower";
+    font-size: 18px;
+    line-height: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+a:link {
+    color: #bbffdd;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #99ddbb;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ccffee;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #88ccaa;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.buttonNav {
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: "Patrick Hand";
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+    background: #00cc99;
+    color: #ffffff;
+    border: 0px solid #00cc99;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    .buttonNav:hover {
+        background: #11ddaa;
+        border: 0px solid #11ddaa;
+        transform: scale(1.05, 1.05)
+    }
+
+    .buttonNav:active {
+        transform: rotate(-2.5deg);
+    }

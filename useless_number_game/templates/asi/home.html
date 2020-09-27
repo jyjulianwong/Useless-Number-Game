@@ -1,0 +1,35 @@
+{% extends "asi/layout.html" %}
+
+{% block content %}
+
+<div class="section">
+    <h1>AnJul's Sleep Indicator</h1>
+    <br />
+    <p>Sweet dreams, honey 🙈</p>
+</div>
+
+<div class="section">
+    <h1>Angel {{ '😴' if state_angel['isSleeping'] == 'true' else '🤩' }}</h1>
+    <br />
+    <p>Angel {{ 'fell asleep' if state_angel['isSleeping'] == 'true' else 'woke up' }} at {{ state_angel['updateTime'] }}…</p>
+    <button
+            type="button"
+            class="buttonNav"
+            onclick="window.location.href='{{ url_for('asi_update', name='Angel') }}'">
+        {{ 'Me awake lah!' if state_angel['isSleeping'] == 'true' else 'Me go to bed lah!' }}
+    </button>
+</div>
+
+<div class="section">
+    <h1>Julian {{ '😴' if state_julian['isSleeping'] == 'true' else '🤩' }}</h1>
+    <br />
+    <p>Julian {{ 'fell asleep' if state_julian['isSleeping'] == 'true' else 'woke up' }} at {{ state_julian['updateTime'] }}…</p>
+    <button
+            type="button"
+            class="buttonNav"
+            onclick="window.location.href='{{ url_for('asi_update', name='Julian') }}'">
+        {{ 'Me awake lah!' if state_julian['isSleeping'] == 'true' else 'Me go to bed lah!' }}
+    </button>
+</div>
+
+{% endblock %}
