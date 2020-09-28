@@ -4,99 +4,114 @@ html, body {
 
 .bg {
     height: 100%;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: Black;
     padding: 15px;
+
+    /* Mozilla Firefox */
+    background-image:
+        -moz-radial-gradient(circle, White 2px, rgba(248,255,128,.5) 4px, transparent 40px),
+        -moz-radial-gradient(circle, White 1px, rgba(255,186,170,.4) 3px, transparent 30px),
+        -moz-radial-gradient(ellipse, rgba(255,255,255,.9) 1px, rgba(251,255,186,.3) 2px, transparent 40px),
+        -moz-radial-gradient(ellipse, rgba(255,255,255,.4), rgba(253,255,219,.2) 1px, transparent 30px);
+
+    /* Webkit */
+    background-image:
+        -webkit-gradient(radial, 50% 50%, 2, 50% 50%, 40, from(White), color-stop(0.1, rgba(248,255,128,.5)), to(transparent)),
+        -webkit-gradient(radial, 50% 50%, 1, 50% 50%, 30, from(White), color-stop(0.1, rgba(255,186,170,.4)), to(transparent)),
+        -webkit-gradient(radial, 50% 50%, 1, 50% 50%, 40, from(rgba(255,255,255,.9)), color-stop(0.05, rgba(251,255,186,.3)), to(transparent)),
+        -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 30, from(rgba(255,255,255,.4)), color-stop(0.03, rgba(253,255,219,.2)), to(transparent));
+
+    /* Background Attributes */
+    background-size: 550px 550px, 350px 350px, 250px 270px, 220px 200px;
+    background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+
+    /* Animation */
+    animation-name: movement;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    /* Mozilla Firefox */
+    -moz-animation-name: movement;
+    -moz-animation-duration: 20s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    /* Webkit */
+    -webkit-animation-name: movement;
+    -webkit-animation-duration: 20s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
 }
 
-.bg_chalkboard {
-    background-image: url("bg_chalkboard.png");
+@keyframes movement {
+    from {
+        background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+    }
+    to {
+        background-position: -550px 0, -320px 60px, -120px 270px, -150px 150px;
+    }
+}
+
+@-moz-keyframes movement {
+    from {
+        background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+    }
+    to {
+        background-position: -550px 0, -320px 60px, -120px 270px, -150px 150px;
+    }
+}
+
+@-webkit-keyframes movement {
+    from {
+        background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+    }
+    to {
+        background-position: -550px 0, -320px 60px, -120px 270px, -150px 150px;
+    }
 }
 
 .section {
-    margin: 25px;
+    margin: 35px;
     text-align: center;
+    font-family: "Indie Flower";
 }
-
-statusBar {
-    display: block;
-    padding: 15px 15px;
-    background-color: rgba(200, 200, 200, 0.50);
-    text-align: center;
-    border: 5px solid rgba(255, 255, 255, 0.50);
-    border-radius: 15px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
-    transition-duration: 0.25s;
-}
-
-    statusBar:hover {
-        background-color: rgba(255, 255, 255, 0.65);
-    }
 
 h1 {
-    font-family: "Indie Flower";
+    font-family: inherit;
     font-size: 28px;
-    line-height: normal;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px #000000; 
+    line-height: 50%;
+    color: rgba(255,255,255,0.75);
 }
 
 p {
-    font-family: "Indie Flower";
-    font-size: 18px;
-    line-height: normal;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px #000000;
-}
-
-a:link {
-    color: #bbffdd;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #99ddbb;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ccffee;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-a:active {
-    color: #88ccaa;
-    background-color: transparent;
-    text-decoration: underline;
+    font-size: 16px;
+    color: White;
 }
 
 .buttonNav {
-    width: 300px;
+    width: 75%;
     margin: 10px;
     padding: 15px;
     cursor: pointer;
-    font-family: "Patrick Hand";
-    font-size: 28px;
-    text-shadow: 2px 2px 4px #000000;
-    background: #00cc99;
-    color: #ffffff;
-    border: 0px solid #00cc99;
+    font-size: 22px;
+    background: rgba(127,255,212,0.75);
+    color: White;
+    border: 0px solid;
     border-radius: 25px;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
     transition-duration: 0.25s;
 }
 
     .buttonNav:hover {
-        background: #11ddaa;
-        border: 0px solid #11ddaa;
+        background: rgb(95,158,160,0.95);
         transform: scale(1.05, 1.05)
     }
 
     .buttonNav:active {
-        transform: rotate(-2.5deg);
+        transform: scale(0.95, 0.95)
     }
+
+.buttonToSleep {
+    background: rgba(0,139,139,0.75);
+}
