@@ -4,68 +4,74 @@ html, body {
 
 .bg {
     height: 100%;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 15px;
-}
-
-.bg_hamster {
-    background-image: url("bg_hamster.png");
+    background-color: GhostWhite;
+    padding: 10px;
 }
 
 .section {
-    margin-top: 50px;
+    margin: 25px;
     text-align: center;
+    font-family: "Indie Flower";
 }
 
 h1 {
-    font-family: "Roboto Mono";
+    font-family: inherit;
     font-size: 40px;
-    line-height: normal;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px #000000;
-}
-
-h2 {
-    font-family: "Roboto Mono";
-    font-size: 32px;
-    line-height: normal;
-    color: #eeeeee;
-    text-shadow: 2px 2px 4px #000000;
+    color: Black;
 }
 
 p {
-    font-family: "Roboto Mono";
-    font-size: 18px;
-    line-height: normal;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px #000000;
+    font-size: 14px;
+    color: Black;
 }
+
+.buttonSitePreview {
+    width: 40%;
+    height: 125px;
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+    background-image: url("bg_hamster.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 25px;
+    color: White;
+    text-shadow: 0px 0px 5px Black;
+    border: 0px solid;
+    border-radius: 25px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
+    transition-duration: 0.25s;
+}
+
+    .buttonSitePreview:hover {
+        background: LightPink;
+        transform: scale(1.05, 1.05)
+    }
+
+    .buttonSitePreview:active {
+        transform: scale(0.95, 0.95)
+    }
 
 .buttonNav {
     width: 75%;
     margin: 10px;
     padding: 15px;
     cursor: pointer;
-    font-family: "Roboto Mono";
-    font-size: 20px;
-    text-shadow: 2px 2px 4px #000000;
-    background: #ffc0cbaa;
-    color: #ffffff;
-    border: 0px solid #ffc0cb;
+    background-color: LightPink;
+    font-size: 25px;
+    color: White;
+    border: 0px solid;
     border-radius: 25px;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.20);
     transition-duration: 0.25s;
 }
 
     .buttonNav:hover {
-        background: #eeb0baaa;
-        border: 0px solid #eeb0ba;
+        background: Pink;
         transform: scale(1.05, 1.05)
     }
 
     .buttonNav:active {
-        transform: rotate(-2.5deg);
+        transform: scale(0.95, 0.95)
     }

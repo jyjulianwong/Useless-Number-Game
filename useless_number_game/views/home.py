@@ -11,10 +11,10 @@ blueprint = Blueprint('home', __name__)
 
 @blueprint.route('/')
 def home():
-	return render_template('home.html')
+	return render_template('home.html', title_ext='')
 
 
 @blueprint.route('/coming-soon')
 @blueprint.route('/coming-soon/')
 def coming_soon():
-	return render_template('comingsoon.html')
+	return render_template('comingsoon.html', title_ext='Coming Soon – ')
