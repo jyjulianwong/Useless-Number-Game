@@ -1,0 +1,38 @@
+{% extends "anjuls_sleep_indicator/layout.html" %}
+
+{% block content %}
+
+<div class="section">
+    <h1>AnJul's Sleep Indicator</h1>
+    <p>Sweet dreams, honey 🙈</p>
+</div>
+
+<div class="section">
+    <h1>Angel</h1>
+    <p>
+        Angel <u>{{ 'fell asleep' if state_angel['isSleeping'] == 'true' else 'woke up' }}</u> at <b>{{ state_angel['updateTime'] }}</b>…
+        {{ '😴' if state_angel['isSleeping'] == 'true' else '🤩' }}
+    </p>
+    <button
+            type="button"
+            class="{{'buttonNav' if state_angel['isSleeping'] == 'true' else 'buttonNav buttonToSleep'}}"
+            onclick="window.location.href='{{ url_for('.update', name='Angel') }}'">
+        {{ 'Koala awake lah!' if state_angel['isSleeping'] == 'true' else 'Koala go to bed lah!' }}
+    </button>
+</div>
+
+<div class="section">
+    <h1>Julian</h1>
+    <p>
+        Julian <u>{{ 'fell asleep' if state_julian['isSleeping'] == 'true' else 'woke up' }}</u> at <b>{{ state_julian['updateTime'] }}</b>…
+        {{ '😴' if state_julian['isSleeping'] == 'true' else '🤩' }}
+    </p>
+    <button
+            type="button"
+            class="{{'buttonNav' if state_julian['isSleeping'] == 'true' else 'buttonNav buttonToSleep'}}"
+            onclick="window.location.href='{{ url_for('.update', name='Julian') }}'">
+        {{ 'Wood awake lah!' if state_julian['isSleeping'] == 'true' else 'Wood go to bed lah!' }}
+    </button>
+</div>
+
+{% endblock %}

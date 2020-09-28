@@ -1,0 +1,28 @@
+{% extends "useless_number_game/layout_user.html" %}
+
+{% block user_content %}
+
+<h2 id="score" align="center"></h2>
+<h2 id="timer" align="center"></h2>
+<h1 id="question" align="center"></h1>
+
+<div class="section">
+    <button type="button" id="btnAnswerA" class="buttonNav buttonRed" onclick="checkAnswer('a')">A</button>
+    <button type="button" id="btnAnswerB" class="buttonNav buttonGreen" onclick="checkAnswer('b')">B</button>
+</div>
+
+<div style="text-align: center">
+    <button type="button" id="btnAnswerC" class="buttonNav buttonBlue" onclick="checkAnswer('c')">C</button>
+    <button type="button" id="btnAnswerD" class="buttonNav buttonYellow" onclick="checkAnswer('d')">D</button>
+</div>
+
+<div class="section">
+    <div id="divStart" class="section">
+        <button type="button" id="btnStart" class="buttonNav" onclick="start()">I am really bored…</button>
+    </div>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.home') }}'">Back…</button>
+</div>
+
+<script src="/static/scripts/uselessnumbergame.main.js"></script>
+
+{% endblock %}

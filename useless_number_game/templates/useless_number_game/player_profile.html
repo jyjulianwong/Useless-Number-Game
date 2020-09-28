@@ -1,0 +1,22 @@
+{% extends "useless_number_game/layout_user.html" %}
+
+{% block user_content %}
+
+<h1 align="center"><u> {{ username }} </u></h1>
+<h2 align="center"> A useless player since {{ sign_up_date }}. </h2>
+
+{% if session['username'] == username %}
+
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.player_change_password', username=username) }}'">Change my password.</button>
+    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('.sign_out') }}'">Sign out.</button>
+    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('.player_delete', username=username) }}'">Delete me!</button>
+</div>
+
+{% endif %}
+
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.home') }}'">Back…</button>
+</div>
+
+{% endblock %}

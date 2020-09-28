@@ -1,0 +1,23 @@
+{% extends "useless_offshore_binary_tree/layout.html" %}
+
+{% block content %}
+
+<h1 align="center">Useless Offshore Binary Tree</h1>
+
+<div class="section" style="text-align: left">
+    <p1>
+        If you know computer science, then you know what a binary tree is. If you don't, then this is probably not a page for you. Get lost.
+        The particular binary tree you see on this site has been stored on a remote MongoDB database somewhere in… Ireland, I'm guessing?
+        We've then given you a way to navigate through this tree, as well as add new nodes onto it.
+        This is just a stupid practice on data structures. Ignore me.
+        <br />
+        For more information, view the <a href="https://github.com/jyjulianwong/exercise-useless-number-game" target="_blank">GitHub repository</a>
+        for this website to see how it was made.
+    </p1>
+</div>
+
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.home') }}'">Back…</button>
+</div>
+
+{% endblock %}

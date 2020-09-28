@@ -1,0 +1,16 @@
+{% extends "useless_offshore_binary_tree/layout.html" %}
+
+{% block content %}
+
+<div class="section">
+    <h1>Useless Offshore Binary Tree</h1>
+</div>
+
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('home.coming_soon') }}'">See the tree</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.tree_navigate', key='root') }}'">Navigate the tree</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.tree_add') }}'">Add to the tree</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.about') }}'">Wtf is this?</button>
+</div>
+
+{% endblock %}

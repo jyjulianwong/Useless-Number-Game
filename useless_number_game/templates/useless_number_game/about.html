@@ -1,0 +1,23 @@
+{% extends "useless_number_game/layout_user.html" %}
+
+{% block user_content %}
+
+<div class="section" style="text-align: left">
+    <p1>
+        Yes. It's. Literally. A. Useless. Number. Game.
+        I honestly don't know how I can put it to you any more clearer than that.
+        There's basic arithmetic questions and you push some buttons to answer and you get a score. Period.
+        Seriously though, unless you are catastrophically dumb or life-threateningly bored, I wouldn't exactly recommend this to anyone.
+        Just do something more productive and you'll be fine.
+        And for the record, this is a Google font, not goddamn Comic Sans.
+        <br />
+        For more information, view the <a href="https://github.com/jyjulianwong/exercise-useless-number-game" target="_blank">GitHub repository</a>
+        for this website to see how it was made.
+    </p1>
+</div>
+
+<div class="section">
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.home') }}'">Back…</button>
+</div>
+
+{% endblock %}

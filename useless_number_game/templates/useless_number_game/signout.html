@@ -1,0 +1,13 @@
+{% extends "useless_number_game/layout.html" %}
+
+{% block content %}
+
+<div class="container" align="center">
+    <h2>The human has signed out!</h2>
+    <p1>See you soon…</p1>
+    <div class="section">
+        <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.home') }}'">Back…</button>
+    </div>
+</div>
+
+{% endblock %}
