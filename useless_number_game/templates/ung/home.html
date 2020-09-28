@@ -3,21 +3,21 @@
 {% block user_content %}
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_main') }}'">Bored.</button>
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_about') }}'">Wtf is this?</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.main') }}'">Bored.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.about') }}'">Wtf is this?</button>
 </div>
 
 {% if 'username' in session %}
 
 <div class="section">
-    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('ung_sign_out') }}'">Sign out.</button>
+    <button type="button" class="buttonNav buttonRed" onclick="window.location.href='{{ url_for('.sign_out') }}'">Sign out.</button>
 </div>
 
 {% else %}
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_sign_up') }}'">Sign up.</button>
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_sign_in') }}'">Sign in.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.sign_up') }}'">Sign up.</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.sign_in') }}'">Sign in.</button>
 </div>
 
 {% endif %}

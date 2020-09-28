@@ -6,10 +6,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
-import useless_number_game.views
-import useless_number_game.views_asi
-import useless_number_game.views_ub
-import useless_number_game.views_um1
-import useless_number_game.views_um2
-import useless_number_game.views_ung
-import useless_number_game.views_uobt
+from useless_number_game.views import home, asi, ub, um1, um2, ung, uobt
+
+app.register_blueprint(home.blueprint)
+app.register_blueprint(asi.blueprint)
+app.register_blueprint(ub.blueprint)
+app.register_blueprint(um1.blueprint)
+app.register_blueprint(um2.blueprint)
+app.register_blueprint(ung.blueprint)
+app.register_blueprint(uobt.blueprint)

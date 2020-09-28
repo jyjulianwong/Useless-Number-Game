@@ -3,10 +3,12 @@ Routes and views for the flask application.
 """
 
 import flask, ssl, datetime
-from flask import Flask, Config, render_template, url_for, request, session, redirect
+from flask import Flask, Config, Blueprint, render_template, url_for, request, session, redirect
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from useless_number_game import app
+
+blueprint = Blueprint('ung', __name__, url_prefix='/ung')
 
 cluster_username = 'admin'
 cluster_password = 'admin'
@@ -26,15 +28,14 @@ def get_player_status():
 	return ('Welcome, ' + session['username'] + '!') if ('username' in session) else 'Oh, hi loser! Want to sign in?'
 
 
-@app.route('/ung')
-@app.route('/ung/')
-def ung_home():
+@blueprint.route('/')
+def home():
 	return render_template('ung/home.html', player_status=get_player_status())
 
 
-@app.route('/ung/sign-up', methods=['GET', 'POST'])
-@app.route('/ung/sign-up/', methods=['GET', 'POST'])
-def ung_sign_up():
+@blueprint.route('/sign-up', methods=['GET', 'POST'])
+@blueprint.route('/sign-up/', methods=['GET', 'POST'])
+def sign_up():
 	error = None
 	is_username_inval = False
 	inval_chars = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '=', '+', '[', '{', ']', '}', '|', ';',
@@ -63,20 +64,20 @@ def ung_sign_up():
 				}
 			)
 			session['username'] = request.form['username']
-			return redirect(url_for('ung_home'))
+			return redirect(url_for('.home'))
 	return render_template('ung/signup.html', error=error)
 
 
-@app.route('/ung/sign-in', methods=['GET', 'POST'])
-@app.route('/ung/sign-in/', methods=['GET', 'POST'])
-def ung_sign_in():
+@blueprint.route('/sign-in', methods=['GET', 'POST'])
+@blueprint.route('/sign-in/', methods=['GET', 'POST'])
+def sign_in():
 	error = None
 	if request.method == 'POST':
 		player = players.find_one({'username': request.form['username']})
 		if player:
 			if check_password_hash(player['password'], request.form['password']):
 				session['username'] = request.form['username']
-				return redirect(url_for('ung_home'))
+				return redirect(url_for('.home'))
 			else:
 				error = "You've got the wrong username or password, mate."
 		else:
@@ -84,28 +85,28 @@ def ung_sign_in():
 	return render_template('ung/signin.html', error=error)
 
 
-@app.route('/ung/sign-out')
-@app.route('/ung/sign-out/')
-def ung_sign_out():
+@blueprint.route('/sign-out')
+@blueprint.route('/sign-out/')
+def sign_out():
 	session.clear()
 	return render_template('ung/signout.html')
 
 
-@app.route('/ung/main')
-@app.route('/ung/main/')
-def ung_main():
+@blueprint.route('/main')
+@blueprint.route('/main/')
+def main():
 	return render_template('ung/main.html', player_status=get_player_status())
 
 
-@app.route('/ung/player-error')
-@app.route('/ung/player-error/')
-def ung_player_error():
+@blueprint.route('/player-error')
+@blueprint.route('/player-error/')
+def player_error():
 	return render_template('ung/playererror.html')
 
 
-@app.route('/ung/player/<username>')
-@app.route('/ung/player/<username>/')
-def ung_player_profile(username):
+@blueprint.route('/player/<username>')
+@blueprint.route('/player/<username>/')
+def player_profile(username):
 	player = players.find_one({'username': username})
 	if player:
 		username = player['username']
@@ -116,14 +117,14 @@ def ung_player_profile(username):
 			player_status=get_player_status(),
 			sign_up_date=sign_up_date
 		)
-	return redirect(url_for('ung_player_error'))
+	return redirect(url_for('.player_error'))
 
 
-@app.route('/ung/player/<username>/change-password', methods=['GET', 'POST'])
-@app.route('/ung/player/<username>/change-password/', methods=['GET', 'POST'])
-def ung_player_change_password(username):
+@blueprint.route('/player/<username>/change-password', methods=['GET', 'POST'])
+@blueprint.route('/player/<username>/change-password/', methods=['GET', 'POST'])
+def player_change_password(username):
 	if session['username'] != username:
-		return redirect(url_for('ung_home'))
+		return redirect(url_for('.home'))
 
 	error = None
 
@@ -137,7 +138,7 @@ def ung_player_change_password(username):
 					{'username': session['username']},
 					{'$set': {'password': generate_password_hash(request.form['newPassword'])}}
 				)
-				return redirect(url_for('ung_player_change_password_confirm', username=username))
+				return redirect(url_for('.player_change_password_confirm', username=username))
 			else:
 				error = "Your passwords aren't the same. Try again…"
 		else:
@@ -145,24 +146,24 @@ def ung_player_change_password(username):
 	return render_template('ung/player_changepassword.html', error=error, username=username)
 
 
-@app.route('/ung/player/<username>/change-password/confirm')
-@app.route('/ung/player/<username>/change-password/confirm/')
-def ung_player_change_password_confirm(username):
+@blueprint.route('/player/<username>/change-password/confirm')
+@blueprint.route('/player/<username>/change-password/confirm/')
+def player_change_password_confirm(username):
 	return render_template('ung/player_changepassword_confirm.html')
 
 
-@app.route('/ung/player/<username>/delete', methods=['GET', 'POST'])
-@app.route('/ung/player/<username>/delete/', methods=['GET', 'POST'])
-def ung_player_delete(username):
+@blueprint.route('/player/<username>/delete', methods=['GET', 'POST'])
+@blueprint.route('/player/<username>/delete/', methods=['GET', 'POST'])
+def player_delete(username):
 	if request.method == 'POST':
 		if session['username'] == username:
 			players.remove({'username': username})
 			session.clear()
-		return redirect(url_for('ung_home'))
+		return redirect(url_for('.home'))
 	return render_template('ung/player_delete.html')
 
 
-@app.route('/ung/about')
-@app.route('/ung/about/')
-def ung_about():
+@blueprint.route('/about')
+@blueprint.route('/about/')
+def about():
 	return render_template('ung/about.html', player_status=get_player_status())

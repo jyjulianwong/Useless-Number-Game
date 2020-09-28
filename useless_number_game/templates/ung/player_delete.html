@@ -8,7 +8,7 @@
     <p1> You are about to <err> delete your profile </err> from Useless Number Game. </p1>
     <br />
     <p1> You will not be able to recover data from your profile after you confirm. </p1>
-    <form action="{{ url_for('ung_player_delete', username=session['username']) }}" method="post">
+    <form action="{{ url_for('.player_delete', username=session['username']) }}" method="post">
         <div class="section">
             <input type="submit" class="buttonNav" value="Go ahead…">
         </div>
@@ -16,7 +16,7 @@
 </div>
 
 <div class="section">
-    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('ung_home') }}'">Back…</button>
+    <button type="button" class="buttonNav" onclick="window.location.href='{{ url_for('.home') }}'">Back…</button>
 </div>
 
 {% endblock %}

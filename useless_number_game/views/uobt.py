@@ -3,10 +3,12 @@ Routes and views for the flask application.
 """
 
 import flask, ssl, datetime
-from flask import Flask, Config, render_template, url_for, request, session, redirect
+from flask import Flask, Config, Blueprint, render_template, url_for, request, session, redirect
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from useless_number_game import app
+
+blueprint = Blueprint('uobt', __name__, url_prefix='/uobt')
 
 cluster_username = 'admin'
 cluster_password = 'admin'
@@ -26,25 +28,24 @@ def is_node_full(node):
 	return node['left'] != '' and node['right'] != ''
 
 
-@app.route('/uobt')
-@app.route('/uobt/')
-def uobt_home():
+@blueprint.route('/')
+def home():
 	return render_template('uobt/home.html')
 
 
-@app.route('/uobt/tree/navigate/<key>')
-@app.route('/uobt/tree/navigate/<key>/')
+@blueprint.route('/tree/navigate/<key>')
+@blueprint.route('/tree/navigate/<key>/')
 # Pre: All values of key exist within the tree
-def uobt_tree_navigate(key):
+def tree_navigate(key):
 	node = nodes.find_one({'key': key})
 	child_left = nodes.find_one({'key': node['left']})
 	child_right = nodes.find_one({'key': node['right']})
 	return render_template('uobt/tree_navigate.html', node=node, child_left=child_left, child_right=child_right)
 
 
-@app.route('/uobt/tree/add', methods=['GET', 'POST'])
-@app.route('/uobt/tree/add/', methods=['GET', 'POST'])
-def uobt_tree_add():
+@blueprint.route('/tree/add', methods=['GET', 'POST'])
+@blueprint.route('/tree/add/', methods=['GET', 'POST'])
+def tree_add():
 	error = None
 
 	if request.method == 'POST':
@@ -85,7 +86,7 @@ def uobt_tree_add():
 	return render_template('uobt/tree_add.html', error=error)
 
 
-@app.route('/uobt/about')
-@app.route('/uobt/about/')
-def uobt_about():
+@blueprint.route('/about')
+@blueprint.route('/about/')
+def about():
 	return render_template('uobt/about.html')

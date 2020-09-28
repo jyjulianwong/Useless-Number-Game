@@ -15,7 +15,7 @@
     <button
             type="button"
             class="buttonNav"
-            onclick="window.location.href='{{ url_for('asi_update', name='Angel') }}'">
+            onclick="window.location.href='{{ url_for('.update', name='Angel') }}'">
         {{ 'Me awake lah!' if state_angel['isSleeping'] == 'true' else 'Me go to bed lah!' }}
     </button>
 </div>
@@ -27,7 +27,7 @@
     <button
             type="button"
             class="buttonNav"
-            onclick="window.location.href='{{ url_for('asi_update', name='Julian') }}'">
+            onclick="window.location.href='{{ url_for('.update', name='Julian') }}'">
         {{ 'Me awake lah!' if state_julian['isSleeping'] == 'true' else 'Me go to bed lah!' }}
     </button>
 </div>

@@ -3,9 +3,11 @@ Routes and views for the flask application.
 """
 
 import flask, ssl, datetime
-from flask import Flask, Config, render_template, url_for, request, session, redirect
+from flask import Flask, Config, Blueprint, render_template, url_for, request, session, redirect
 from flask_pymongo import PyMongo
 from useless_number_game import app
+
+blueprint = Blueprint('asi', __name__, url_prefix='/asi')
 
 cluster_username = 'admin'
 cluster_password = 'admin'
@@ -22,17 +24,16 @@ app.config[
 states = PyMongo(app, ssl=True, ssl_cert_reqs=ssl.CERT_NONE).db.states
 
 
-@app.route('/asi')
-@app.route('/asi/')
-def asi_home():
+@blueprint.route('/')
+def home():
 	state_angel = states.find_one({'name': 'Angel'})
 	state_julian = states.find_one({'name': 'Julian'})
 	return render_template('asi/home.html', state_angel=state_angel, state_julian=state_julian)
 
 
-@app.route('/asi/update/<name>')
-@app.route('/asi/update/<name>/')
-def asi_update(name):
+@blueprint.route('/update/<name>')
+@blueprint.route('/update/<name>/')
+def update(name):
 	state = states.find_one({'name': name})
 	if state['isSleeping'] == 'true':
 		is_sleeping = 'false'
@@ -46,4 +47,4 @@ def asi_update(name):
 			'updateTime': str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 		}}
 	)
-	return redirect(url_for('asi_home'))
+	return redirect(url_for('.home'))

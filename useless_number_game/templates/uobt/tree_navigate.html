@@ -19,7 +19,7 @@
         {% if child_left %}
 
         <div class="node nodeChild">
-            <p1>Name: <a href="{{ url_for('uobt_tree_navigate', key=child_left['key']) }}">{{ child_left['key'] }}</a></p1>
+            <p1>Name: <a href="{{ url_for('.tree_navigate', key=child_left['key']) }}">{{ child_left['key'] }}</a></p1>
         </div>
 
         {% endif %}
@@ -27,7 +27,7 @@
         {% if child_right %}
 
         <div class="node nodeChild">
-            <p1>Name: <a href="{{ url_for('uobt_tree_navigate', key=child_right['key']) }}">{{ child_right['key'] }}</a></p1>
+            <p1>Name: <a href="{{ url_for('.tree_navigate', key=child_right['key']) }}">{{ child_right['key'] }}</a></p1>
         </div>
 
         {% endif %}
