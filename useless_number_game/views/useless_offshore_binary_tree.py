@@ -30,7 +30,7 @@ def is_node_full(node):
 
 @blueprint.route('/')
 def home():
-	return render_template('useless_offshore_binary_tree/home.html')
+	return render_template('useless_offshore_binary_tree/home.html', title_ext='')
 
 
 @blueprint.route('/tree/navigate/<key>')
@@ -40,7 +40,13 @@ def tree_navigate(key):
 	node = nodes.find_one({'key': key})
 	child_left = nodes.find_one({'key': node['left']})
 	child_right = nodes.find_one({'key': node['right']})
-	return render_template('useless_offshore_binary_tree/tree_navigate.html', node=node, child_left=child_left, child_right=child_right)
+	return render_template(
+		'useless_offshore_binary_tree/tree_navigate.html',
+		title_ext='Navigate {} – '.format(node['key']),
+		node=node,
+		child_left=child_left,
+		child_right=child_right
+	)
 
 
 @blueprint.route('/tree/add', methods=['GET', 'POST'])
@@ -83,10 +89,17 @@ def tree_add():
 				)
 			nodes.insert(new_node)
 			# TODO: Clear form after submission
-	return render_template('useless_offshore_binary_tree/tree_add.html', error=error)
+	return render_template(
+		'useless_offshore_binary_tree/tree_add.html',
+		title_ext='Add a Node – ',
+		error=error
+	)
 
 
 @blueprint.route('/about')
 @blueprint.route('/about/')
 def about():
-	return render_template('useless_offshore_binary_tree/about.html')
+	return render_template(
+		'useless_offshore_binary_tree/about.html',
+		title_ext='About – '
+	)

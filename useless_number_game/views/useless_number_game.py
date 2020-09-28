@@ -30,7 +30,11 @@ def get_player_status():
 
 @blueprint.route('/')
 def home():
-	return render_template('useless_number_game/home.html', player_status=get_player_status())
+	return render_template(
+		'useless_number_game/home.html',
+		title_ext='',
+		player_status=get_player_status()
+	)
 
 
 @blueprint.route('/sign-up', methods=['GET', 'POST'])
@@ -65,7 +69,10 @@ def sign_up():
 			)
 			session['username'] = request.form['username']
 			return redirect(url_for('.home'))
-	return render_template('useless_number_game/signup.html', error=error)
+	return render_template(
+		'useless_number_game/signup.html',
+		title_ext='Sign Up – ',
+		error=error)
 
 
 @blueprint.route('/sign-in', methods=['GET', 'POST'])
@@ -82,26 +89,34 @@ def sign_in():
 				error = "You've got the wrong username or password, mate."
 		else:
 			error = "You've got the wrong username, mate."
-	return render_template('useless_number_game/signin.html', error=error)
+	return render_template(
+		'useless_number_game/signin.html',
+		title_ext='Sign In – ',
+		error=error
+	)
 
 
 @blueprint.route('/sign-out')
 @blueprint.route('/sign-out/')
 def sign_out():
 	session.clear()
-	return render_template('useless_number_game/signout.html')
+	return render_template('useless_number_game/signout.html', title_ext='Sign Out – ')
 
 
 @blueprint.route('/main')
 @blueprint.route('/main/')
 def main():
-	return render_template('useless_number_game/main.html', player_status=get_player_status())
+	return render_template(
+		'useless_number_game/main.html',
+		title_ext='',
+		player_status=get_player_status()
+	)
 
 
 @blueprint.route('/player-error')
 @blueprint.route('/player-error/')
 def player_error():
-	return render_template('useless_number_game/playererror.html')
+	return render_template('useless_number_game/playererror.html', title_ext='')
 
 
 @blueprint.route('/player/<username>')
@@ -113,6 +128,7 @@ def player_profile(username):
 		sign_up_date = player['signUpDate']
 		return render_template(
 			'useless_number_game/player_profile.html',
+			title_ext='{} – '.format(username),
 			username=username,
 			player_status=get_player_status(),
 			sign_up_date=sign_up_date
@@ -143,13 +159,21 @@ def player_change_password(username):
 				error = "Your passwords aren't the same. Try again…"
 		else:
 			error = "You've got the wrong password, mate. Try again…"
-	return render_template('useless_number_game/player_changepassword.html', error=error, username=username)
+	return render_template(
+		'useless_number_game/player_changepassword.html',
+		title_ext='Change {}\'s Password – '.format(username),
+		error=error,
+		username=username
+	)
 
 
 @blueprint.route('/player/<username>/change-password/confirm')
 @blueprint.route('/player/<username>/change-password/confirm/')
 def player_change_password_confirm(username):
-	return render_template('useless_number_game/player_changepassword_confirm.html')
+	return render_template(
+		'useless_number_game/player_changepassword_confirm.html',
+		title_ext=''
+	)
 
 
 @blueprint.route('/player/<username>/delete', methods=['GET', 'POST'])
@@ -160,10 +184,14 @@ def player_delete(username):
 			players.remove({'username': username})
 			session.clear()
 		return redirect(url_for('.home'))
-	return render_template('useless_number_game/player_delete.html')
+	return render_template('useless_number_game/player_delete.html', title_ext='Delete a Player – ')
 
 
 @blueprint.route('/about')
 @blueprint.route('/about/')
 def about():
-	return render_template('useless_number_game/about.html', player_status=get_player_status())
+	return render_template(
+		'useless_number_game/about.html',
+		title_ext='About – ',
+		player_status=get_player_status()
+	)
