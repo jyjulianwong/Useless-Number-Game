@@ -13,12 +13,24 @@
         Angel <u>{{ 'fell asleep' if state_angel['isSleeping'] == 'true' else 'woke up' }}</u> at <b>{{ state_angel['updateTime'] }}</b>…
         {{ '😴' if state_angel['isSleeping'] == 'true' else '🤩' }}
     </p>
-    <button
-            type="button"
-            class="{{'buttonNav' if state_angel['isSleeping'] == 'true' else 'buttonNav buttonToSleep'}}"
-            onclick="window.location.href='{{ url_for('.update', name='Angel') }}'">
-        {{ 'Koala awake lah!' if state_angel['isSleeping'] == 'true' else 'Koala go to bed lah!' }}
-    </button>
+    <form action="{{ url_for('.home') }}" method="post">
+        <div class="sectionSwitch">
+            <p>
+                Hong Kong&nbsp;
+                    <label class="switch">
+                        <input type="checkbox" name="inUnitedKingdomAngel" />
+                        <span class="slider"></span>
+                    </label>
+                &nbsp;London
+            </p>
+        </div>
+        <input
+                type="submit"
+                class="{{ 'buttonNav' if state_angel['isSleeping'] == 'true' else 'buttonNav buttonToSleep' }}"
+                name="action"
+                value="{{ 'Koala awake lah!' if state_angel['isSleeping'] == 'true' else 'Koala go to bed lah!' }}"
+        />
+    </form>
 </div>
 
 <div class="section">
@@ -27,12 +39,24 @@
         Julian <u>{{ 'fell asleep' if state_julian['isSleeping'] == 'true' else 'woke up' }}</u> at <b>{{ state_julian['updateTime'] }}</b>…
         {{ '😴' if state_julian['isSleeping'] == 'true' else '🤩' }}
     </p>
-    <button
-            type="button"
-            class="{{'buttonNav' if state_julian['isSleeping'] == 'true' else 'buttonNav buttonToSleep'}}"
-            onclick="window.location.href='{{ url_for('.update', name='Julian') }}'">
-        {{ 'Wood awake lah!' if state_julian['isSleeping'] == 'true' else 'Wood go to bed lah!' }}
-    </button>
+    <form action="{{ url_for('.home') }}" method="post">
+        <div class="sectionSwitch">
+            <p>
+                Hong Kong&nbsp;
+                    <label class="switch">
+                        <input type="checkbox" name="inUnitedKingdomJulian" />
+                        <span class="slider"></span>
+                    </label>
+                &nbsp;London
+            </p>
+        </div>
+        <input
+                type="submit"
+                class="{{ 'buttonNav' if state_julian['isSleeping'] == 'true' else 'buttonNav buttonToSleep' }}"
+                name="action"
+                value="{{ 'Wood awake lah!' if state_julian['isSleeping'] == 'true' else 'Wood go to bed lah!' }}"
+        />
+    </form>
 </div>
 
 {% endblock %}

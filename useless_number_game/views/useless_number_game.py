@@ -72,7 +72,8 @@ def sign_up():
 	return render_template(
 		'useless_number_game/signup.html',
 		title_ext='Sign Up – ',
-		error=error)
+		error=error
+	)
 
 
 @blueprint.route('/sign-in', methods=['GET', 'POST'])
