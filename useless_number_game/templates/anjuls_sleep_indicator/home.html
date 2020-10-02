@@ -10,8 +10,10 @@
 <div class="section">
     <h1>Angel</h1>
     <p>
-        Angel <u>{{ 'fell asleep' if state_angel['isSleeping'] == 'true' else 'woke up' }}</u> at <b>{{ state_angel['updateTime'] }}</b>…
-        {{ '😴' if state_angel['isSleeping'] == 'true' else '🤩' }}
+        Angel {{ 'fell asleep' if state_angel['isSleeping'] == 'true' else 'woke up' }} at…
+    </p>
+    <p class="emphasis">
+        {{ state_angel['updateTime'] }} {{ '😴' if state_angel['isSleeping'] == 'true' else '🤩' }}
     </p>
     <form action="{{ url_for('.home') }}" method="post">
         <div class="sectionSwitch">
@@ -40,8 +42,10 @@
 <div class="section">
     <h1>Julian</h1>
     <p>
-        Julian <u>{{ 'fell asleep' if state_julian['isSleeping'] == 'true' else 'woke up' }}</u> at <b>{{ state_julian['updateTime'] }}</b>…
-        {{ '😴' if state_julian['isSleeping'] == 'true' else '🤩' }}
+        Julian {{ 'fell asleep' if state_julian['isSleeping'] == 'true' else 'woke up' }} at…
+    </p>
+    <p class="emphasis">
+        {{ state_julian['updateTime'] }} {{ '😴' if state_julian['isSleeping'] == 'true' else '🤩' }}
     </p>
     <form action="{{ url_for('.home') }}" method="post">
         <div class="sectionSwitch">
