@@ -18,7 +18,11 @@
             <p>
                 Hong Kong&nbsp;
                     <label class="switch">
-                        <input type="checkbox" name="inUnitedKingdomAngel" />
+                        <input
+                                type="checkbox"
+                                name="inUnitedKingdomAngel"
+                                {% if in_united_kingdom_angel %} checked {% endif %}
+                        />
                         <span class="slider"></span>
                     </label>
                 &nbsp;London
@@ -44,7 +48,11 @@
             <p>
                 Hong Kong&nbsp;
                     <label class="switch">
-                        <input type="checkbox" name="inUnitedKingdomJulian" />
+                        <input
+                                type="checkbox"
+                                name="inUnitedKingdomJulian"
+                                {% if in_united_kingdom_julian %} checked {% endif %}
+                        />
                         <span class="slider"></span>
                     </label>
                 &nbsp;London

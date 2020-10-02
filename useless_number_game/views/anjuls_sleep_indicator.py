@@ -28,7 +28,9 @@ states = PyMongo(app, ssl=True, ssl_cert_reqs=ssl.CERT_NONE).db.states
 @blueprint.route('/', methods=['GET', 'POST'])
 def home():
 	state_angel = states.find_one({'name': 'Angel'})
+	in_united_kingdom_angel = state_angel['inUnitedKingdom'] == 'true'
 	state_julian = states.find_one({'name': 'Julian'})
+	in_united_kingdom_julian = state_julian['inUnitedKingdom'] == 'true'
 
 	if request.method == 'POST':
 		if 'Koala' in request.form['action']:
@@ -42,22 +44,28 @@ def home():
 		else:
 			is_sleeping = 'true'
 
-		# TODO: Timezones do not change according to the checkbox
-		# TODO: Conditionally render the checkbox as checked
 		if request.form.get('inUnitedKingdom{}'.format(name)):
-			# .get method always returns non-nil value?
+			in_united_kingdom = "true"
 			update_tz = pytz.timezone('Europe/London')
 		else:
+			in_united_kingdom = "false"
 			update_tz = pytz.timezone('Asia/Hong_Kong')
-		update_time = update_tz.localize(datetime.now())
+		update_time = datetime.now().astimezone(update_tz)
 		update_time_string = str(update_time.strftime("%d %b %H:%M"))
 
 		states.update(
 			{'name': name},
 			{'$set': {
 				'isSleeping': is_sleeping,
+				'inUnitedKingdom': in_united_kingdom,
 				'updateTime': update_time_string
 			}}
 		)
 		return redirect(url_for('.home'))
-	return render_template('anjuls_sleep_indicator/home.html', state_angel=state_angel, state_julian=state_julian)
+	return render_template(
+		'anjuls_sleep_indicator/home.html',
+		state_angel=state_angel,
+		in_united_kingdom_angel=in_united_kingdom_angel,
+		state_julian=state_julian,
+		in_united_kingdom_julian=in_united_kingdom_julian
+	)
