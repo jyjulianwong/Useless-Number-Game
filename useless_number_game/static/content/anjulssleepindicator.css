@@ -4,6 +4,7 @@ html, body {
 
 .bg {
     height: 100%;
+    line-height: 1.0;
     background-color: Black;
     padding: 15px;
 
@@ -72,7 +73,7 @@ html, body {
 }
 
 .section {
-    margin: 35px;
+    margin: 25px;
     text-align: center;
     font-family: "Indie Flower";
 }
@@ -88,7 +89,6 @@ h1 {
     font-family: inherit;
     font-size: 28px;
     font-weight: bold;
-    line-height: 50%;
     color: rgba(255,255,255,0.75);
 }
 
@@ -98,7 +98,7 @@ p {
 }
 
 p.emphasis {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: White;
 }
@@ -109,6 +109,7 @@ p.emphasis {
     padding: 15px;
     cursor: pointer;
     font-size: 22px;
+    line-height: normal;
     background: rgba(95,158,160,0.75);
     color: rgba(255,255,255,0.85);
     border: 2px solid White;
