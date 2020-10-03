@@ -27,29 +27,22 @@ states = PyMongo(app, ssl=True, ssl_cert_reqs=ssl.CERT_NONE).db.states
 
 @blueprint.route('/', methods=['GET', 'POST'])
 def home():
-	state_angel = states.find_one({'name': 'Angel'})
-	in_united_kingdom_angel = state_angel['inUnitedKingdom'] == 'true'
-	state_julian = states.find_one({'name': 'Julian'})
-	in_united_kingdom_julian = state_julian['inUnitedKingdom'] == 'true'
+	state_a = states.find_one({'name': 'Angel'})
+	is_sleeping_a = state_a['isSleeping'] == 'true'
+	in_united_kingdom_a = state_a['inUnitedKingdom'] == 'true'
+
+	state_j = states.find_one({'name': 'Julian'})
+	is_sleeping_j = state_j['isSleeping'] == 'true'
+	in_united_kingdom_j = state_j['inUnitedKingdom'] == 'true'
 
 	if request.method == 'POST':
-		if 'Koala' in request.form['action']:
-			name = 'Angel'
-		else:
-			name = 'Julian'
-
+		# TODO: Clear wake and sleep times if a change in region is detected
+		name = 'Angel' if 'Koala' in request.form['action'] else 'Julian'
 		state = states.find_one({'name': name})
-		if state['isSleeping'] == 'true':
-			is_sleeping = 'false'
-		else:
-			is_sleeping = 'true'
-
-		if request.form.get('inUnitedKingdom{}'.format(name)):
-			in_united_kingdom = "true"
-			update_tz = pytz.timezone('Europe/London')
-		else:
-			in_united_kingdom = "false"
-			update_tz = pytz.timezone('Asia/Hong_Kong')
+		is_sleeping = 'false' if state['isSleeping'] == 'true' else 'true'
+		in_united_kingdom = 'true' if request.form.get('inUnitedKingdom{}'.format(name)) else 'false'
+		update_time_phase = 'updateWakeTime' if state['isSleeping'] == 'true' else 'updateSleepTime'
+		update_tz = pytz.timezone('Europe/London') if request.form.get('inUnitedKingdom{}'.format(name)) else pytz.timezone('Asia/Hong_Kong')
 		update_time = datetime.now().astimezone(update_tz)
 		update_time_string = str(update_time.strftime("%d %b %H:%M"))
 
@@ -58,14 +51,18 @@ def home():
 			{'$set': {
 				'isSleeping': is_sleeping,
 				'inUnitedKingdom': in_united_kingdom,
-				'updateTime': update_time_string
+				update_time_phase: update_time_string
 			}}
 		)
+
 		return redirect(url_for('.home'))
+
 	return render_template(
 		'anjuls_sleep_indicator/home.html',
-		state_angel=state_angel,
-		in_united_kingdom_angel=in_united_kingdom_angel,
-		state_julian=state_julian,
-		in_united_kingdom_julian=in_united_kingdom_julian
+		state_a=state_a,
+		is_sleeping_a=is_sleeping_a,
+		in_united_kingdom_a=in_united_kingdom_a,
+		state_j=state_j,
+		is_sleeping_j=is_sleeping_j,
+		in_united_kingdom_j=in_united_kingdom_j
 	)

@@ -8,13 +8,10 @@
 </div>
 
 <div class="section">
-    <h1>Angel</h1>
-    <p>
-        Angel {{ 'fell asleep' if state_angel['isSleeping'] == 'true' else 'woke up' }} at…
-    </p>
-    <p class="emphasis">
-        {{ state_angel['updateTime'] }} {{ '😴' if state_angel['isSleeping'] == 'true' else '🤩' }}
-    </p>
+    <p>Angel woke up at…</p>
+    <p class="emphasis">{{ state_a['updateWakeTime'] }} 🤩</p>
+    <p>Angel fell asleep at…</p>
+    <p class="emphasis">{{ state_a['updateSleepTime'] }} 😴</p>
     <form action="{{ url_for('.home') }}" method="post">
         <div class="sectionSwitch">
             <p>
@@ -23,7 +20,7 @@
                         <input
                                 type="checkbox"
                                 name="inUnitedKingdomAngel"
-                                {% if in_united_kingdom_angel %} checked {% endif %}
+                                {% if in_united_kingdom_a %} checked {% endif %}
                         />
                         <span class="slider"></span>
                     </label>
@@ -32,21 +29,18 @@
         </div>
         <input
                 type="submit"
-                class="{{ 'buttonNav' if state_angel['isSleeping'] == 'true' else 'buttonNav buttonToSleep' }}"
+                class="{{ 'buttonNav' if is_sleeping_a else 'buttonNav buttonToSleep' }}"
                 name="action"
-                value="{{ 'Koala awake lah!' if state_angel['isSleeping'] == 'true' else 'Koala go to bed lah!' }}"
+                value="{{ 'Koala awake lah!' if is_sleeping_a else 'Koala go to bed lah!' }}"
         />
     </form>
 </div>
 
 <div class="section">
-    <h1>Julian</h1>
-    <p>
-        Julian {{ 'fell asleep' if state_julian['isSleeping'] == 'true' else 'woke up' }} at…
-    </p>
-    <p class="emphasis">
-        {{ state_julian['updateTime'] }} {{ '😴' if state_julian['isSleeping'] == 'true' else '🤩' }}
-    </p>
+    <p>Julian woke up at…</p>
+    <p class="emphasis">{{ state_j['updateWakeTime'] }} 🤩</p>
+    <p>Julian fell asleep at…</p>
+    <p class="emphasis">{{ state_j['updateSleepTime'] }} 😴</p>
     <form action="{{ url_for('.home') }}" method="post">
         <div class="sectionSwitch">
             <p>
@@ -55,7 +49,7 @@
                         <input
                                 type="checkbox"
                                 name="inUnitedKingdomJulian"
-                                {% if in_united_kingdom_julian %} checked {% endif %}
+                                {% if in_united_kingdom_j %} checked {% endif %}
                         />
                         <span class="slider"></span>
                     </label>
@@ -64,9 +58,9 @@
         </div>
         <input
                 type="submit"
-                class="{{ 'buttonNav' if state_julian['isSleeping'] == 'true' else 'buttonNav buttonToSleep' }}"
+                class="{{ 'buttonNav' if is_sleeping_j else 'buttonNav buttonToSleep' }}"
                 name="action"
-                value="{{ 'Wood awake lah!' if state_julian['isSleeping'] == 'true' else 'Wood go to bed lah!' }}"
+                value="{{ 'Wood awake lah!' if is_sleeping_j else 'Wood go to bed lah!' }}"
         />
     </form>
 </div>
