@@ -4,11 +4,12 @@ html, body {
 
 .bg {
     height: 100%;
-    background-position: center;
+    min-height: 480px;
     background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #eeeeee;
+    background-color: GhostWhite;
     padding: 15px;
 }
 
